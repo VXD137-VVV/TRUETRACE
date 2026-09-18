@@ -1,0 +1,1992 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "username": "Alex Vance",
+      "email": "admin@truetrace.io",
+      "role": "admin",
+      "status": "active",
+      "company": "TrueTrace Security Labs",
+      "createdAt": "2025-01-01",
+      "twoFactorEnabled": true,
+      "themePreference": "dark"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-215181",
+      "sku": "TTRRSS33",
+      "name": "book",
+      "category": "Apparel",
+      "brand": "INDIA",
+      "manufacturer": "INDIA Manufacturing SA",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Registered in Personal Vault",
+      "status": "authentic",
+      "verificationCount": 0,
+      "lastVerified": "Not verified yet",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+      "description": "Tamper-proof cryptographic product passport asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/TTRRSS33",
+      "securityScore": 99,
+      "userId": "user-1789735414343-ouid",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 9:30:15 PM",
+          "location": "USA",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Cryptographic Tag": "Ed25519 Micro-Seal",
+        "Provenance Status": "Genesis Registered",
+        "Block Index": "#19",
+        "Block Hash": "003d681c0631c8d1..."
+      }
+    },
+    {
+      "id": "prod-186062",
+      "sku": "TTLUXMTRU",
+      "name": "TABLETS",
+      "category": "Pharmaceuticals",
+      "brand": "INDIA",
+      "manufacturer": "INDIA Manufacturing SA",
+      "manufacturingDate": "2026-09-18",
+      "origin": "UK",
+      "currentLocation": "Registered in Personal Vault",
+      "status": "authentic",
+      "verificationCount": 1,
+      "lastVerified": "Just now",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+      "description": "BEST PRODUCT IN THE WORLD",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/TTLUXMTRU",
+      "securityScore": 99,
+      "userId": "user-1789735414343-ouid",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 9:29:45 PM",
+          "location": "UK",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Cryptographic Tag": "Ed25519 Micro-Seal",
+        "Provenance Status": "Genesis Registered",
+        "Block Index": "#18",
+        "Block Hash": "0019b249afc2966d..."
+      }
+    },
+    {
+      "id": "prod-121451",
+      "sku": "TT22YY66",
+      "name": "EARPHONES",
+      "category": "Automotive",
+      "brand": "INDIA",
+      "manufacturer": "INDIA Manufacturing SA",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Registered in Personal Vault",
+      "status": "authentic",
+      "verificationCount": 0,
+      "lastVerified": "Not verified yet",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
+      "description": "Tamper-proof cryptographic product passport asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/TT22YY66",
+      "securityScore": 99,
+      "userId": "user-1789735414343-ouid",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 9:28:41 PM",
+          "location": "USA",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Cryptographic Tag": "Ed25519 Micro-Seal",
+        "Provenance Status": "Genesis Registered",
+        "Block Index": "#17",
+        "Block Hash": "00c6cbee4aaf4698..."
+      }
+    },
+    {
+      "id": "prod-088436",
+      "sku": "YYTTEERR",
+      "name": "PHONE",
+      "category": "Electronics",
+      "brand": "NOTHING",
+      "manufacturer": "NOTHING Manufacturing SA",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Registered in Personal Vault",
+      "status": "authentic",
+      "verificationCount": 0,
+      "lastVerified": "Not verified yet",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80",
+      "description": "Tamper-proof cryptographic product passport asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/YYTTEERR",
+      "securityScore": 99,
+      "userId": "user-1789735414343-ouid",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 9:28:07 PM",
+          "location": "USA",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Cryptographic Tag": "Ed25519 Micro-Seal",
+        "Provenance Status": "Genesis Registered",
+        "Block Index": "#16",
+        "Block Hash": "00c8dec1efa70b4b..."
+      }
+    },
+    {
+      "id": "prod-831086",
+      "sku": "rrtteeww",
+      "name": "phone",
+      "category": "Luxury",
+      "brand": "fasttrack",
+      "manufacturer": "fasttrack Manufacturing Corp",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Central Vault Warehouse",
+      "status": "authentic",
+      "verificationCount": 1,
+      "lastVerified": "Just now",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
+      "description": "Cryptographically verified registered asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/rrtteeww",
+      "securityScore": 99,
+      "userId": "user-1789746796015-6q62",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 9:23:50 PM",
+          "location": "USA",
+          "handler": "Srinu",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Standard": "ISO/IEC 27001 Cryptographic RoT",
+        "Ledger State": "Genesis Registered",
+        "Block Index": "#12",
+        "Block Hash": "0085019b0343d3ee..."
+      }
+    },
+    {
+      "id": "prod-713441",
+      "sku": "tt yyr rrrr",
+      "name": "watch",
+      "category": "Luxury",
+      "brand": "hand",
+      "manufacturer": "hand Manufacturing SA",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Registered in Personal Vault",
+      "status": "authentic",
+      "verificationCount": 2,
+      "lastVerified": "Just now",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
+      "description": "Tamper-proof cryptographic product passport asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/tt yyr rrrr",
+      "securityScore": 99,
+      "userId": "user-1789744661547-s1qx",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 8:48:30 PM",
+          "location": "USA",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Cryptographic Tag": "Ed25519 Micro-Seal",
+        "Provenance Status": "Genesis Registered",
+        "Block Index": "#7",
+        "Block Hash": "005e1736c5ecebad..."
+      }
+    },
+    {
+      "id": "prod-451050",
+      "sku": "KLDICJKHJCBDHCBQWI",
+      "name": "watch",
+      "category": "Luxury",
+      "brand": "hand",
+      "manufacturer": "hand Manufacturing Corp",
+      "manufacturingDate": "2026-09-18",
+      "origin": "USA",
+      "currentLocation": "Central Vault Warehouse",
+      "status": "authentic",
+      "verificationCount": 4,
+      "lastVerified": "Just now",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
+      "description": "Cryptographically verified registered asset.",
+      "batchNumber": "BATCH-2026-01",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/KLDICJKHJCBDHCBQWI",
+      "securityScore": 99,
+      "userId": "user-1789735414343-ouid",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Genesis Product Registration & Blockchain Mint",
+          "status": "completed",
+          "timestamp": "9/18/2026, 6:14:08 PM",
+          "location": "USA",
+          "handler": "vinodh_ 404",
+          "notes": "Mined into TrueTrace SHA-256 decentralized ledger.",
+          "verifiedBy": "TrueTrace Ledger Protocol Node #1"
+        }
+      ],
+      "specs": {
+        "Origin Standard": "ISO/IEC 27001 Cryptographic RoT",
+        "Ledger State": "Genesis Registered",
+        "Block Index": "#3",
+        "Block Hash": "00ad469e7f3eb9ac..."
+      }
+    },
+    {
+      "id": "prod-genesis-001",
+      "sku": "TT-LUX-9941",
+      "name": "Aethel Chrono Grand Tourbillon",
+      "category": "Luxury",
+      "brand": "Aethel Horology",
+      "manufacturer": "Atelier de Haute Horlogerie SA",
+      "manufacturingDate": "2025-03-12",
+      "origin": "Geneva, Switzerland",
+      "currentLocation": "Bahnhofstrasse Flagship Vault, Zurich",
+      "status": "authentic",
+      "verificationCount": 2,
+      "lastVerified": "Just now",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
+      "description": "Masterpiece tourbillon timepiece featuring single-crystal sapphire casing and cryptographic micro-tag seal.",
+      "batchNumber": "BATCH-CHRONO-2025-Q1",
+      "qrCodeUrl": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/TT-LUX-9941",
+      "securityScore": 99,
+      "userId": "admin-001",
+      "timeline": [
+        {
+          "id": "step-1",
+          "title": "Manufactured & Cryptographically Sealed",
+          "status": "completed",
+          "timestamp": "2025-03-12 09:30 AM",
+          "location": "Geneva Atelier, Switzerland",
+          "handler": "Master Horologist Jean-Luc",
+          "notes": "RSA-4096 / Ed25519 root micro-seal embedded into bezel.",
+          "verifiedBy": "Geneva Quality Directorate"
+        },
+        {
+          "id": "step-2",
+          "title": "Tamper-Evident Packaging & Export Cleared",
+          "status": "completed",
+          "timestamp": "2025-03-14 02:15 PM",
+          "location": "Geneva International Port",
+          "handler": "Alpine Secure Logistics",
+          "notes": "Passed x-ray optical seal integrity scan."
+        },
+        {
+          "id": "step-3",
+          "title": "Arrived at Flagship Vault & Verified",
+          "status": "completed",
+          "timestamp": "2025-03-16 11:00 AM",
+          "location": "Bahnhofstrasse Flagship, Zurich",
+          "handler": "Boutique Curator Elena",
+          "notes": "Handshake scan performed via TrueTrace Optical Scanner."
+        }
+      ],
+      "specs": {
+        "Movement": "Manual-Wind Flying Tourbillon (Calibre TT-01)",
+        "Case Material": "Grade 5 Titanium & Anti-Scratch Sapphire",
+        "Power Reserve": "72 Hours Chronometer Certified",
+        "Digital Passport": "Decentralized SHA-256 Block Proof #1"
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "id": "verif-258572",
+      "productId": "prod-186062",
+      "productName": "TABLETS",
+      "brand": "INDIA",
+      "category": "Pharmaceuticals",
+      "verificationId": "TTLUXMTRU",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 9:30:58 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-240228",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "KLDICJKHJCBDHCBQWI",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 9:30:40 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-018006",
+      "productName": "Unregistered / Unknown QR Token",
+      "brand": "Unrecognized Entity",
+      "category": "Unknown",
+      "verificationId": "TT-QR-PLAI-5062",
+      "status": "not_found",
+      "scannedAt": "18/9/2026, 9:26:58 pm",
+      "location": "Public Scan Point",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "QR File Processor",
+      "ipAddress": "127.0.0.1",
+      "anomalyScore": 92,
+      "method": "upload",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Token identifier not found on cryptographic ledger"
+      ]
+    },
+    {
+      "id": "verif-863898",
+      "productId": "prod-831086",
+      "productName": "phone",
+      "brand": "fasttrack",
+      "category": "Luxury",
+      "verificationId": "rrtteeww",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 9:24:23 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "Srinu",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789746796015-6q62",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-856454",
+      "productName": "Unregistered / Unknown QR Token",
+      "brand": "Unrecognized Entity",
+      "category": "Unknown",
+      "verificationId": "DUIEGF",
+      "status": "not_found",
+      "scannedAt": "18/9/2026, 9:24:16 pm",
+      "location": "Public Scan Point",
+      "scannedBy": "Srinu",
+      "deviceType": "Web Console",
+      "ipAddress": "127.0.0.1",
+      "anomalyScore": 92,
+      "method": "manual",
+      "userId": "user-1789746796015-6q62",
+      "riskFactors": [
+        "Token identifier not found on cryptographic ledger"
+      ]
+    },
+    {
+      "id": "verif-303905",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "KLDICJKHJCBDHCBQWI",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 9:15:03 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-101170",
+      "productId": "prod-713441",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "tt yyr rrrr",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 8:55:01 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "Venkata",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789745050905-0at1",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-770391",
+      "productName": "Unregistered / Unknown QR Token",
+      "brand": "Unrecognized Entity",
+      "category": "Unknown",
+      "verificationId": "SN223311YY",
+      "status": "not_found",
+      "scannedAt": "18/9/2026, 8:49:30 pm",
+      "location": "Public Scan Point",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Console",
+      "ipAddress": "127.0.0.1",
+      "anomalyScore": 92,
+      "method": "manual",
+      "userId": "user-1789744661547-s1qx",
+      "riskFactors": [
+        "Token identifier not found on cryptographic ledger"
+      ]
+    },
+    {
+      "id": "verif-727485",
+      "productId": "prod-713441",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "tt yyr rrrr",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 8:48:47 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789744661547-s1qx",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-515935",
+      "productName": "Unregistered / Unknown QR Token",
+      "brand": "Unrecognized Entity",
+      "category": "Unknown",
+      "verificationId": "TT-QR-PLAI-1997",
+      "status": "not_found",
+      "scannedAt": "18/9/2026, 6:15:15 pm",
+      "location": "Public Scan Point",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "QR File Processor",
+      "ipAddress": "127.0.0.1",
+      "anomalyScore": 92,
+      "method": "upload",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Token identifier not found on cryptographic ledger"
+      ]
+    },
+    {
+      "id": "verif-457262",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "KLDICJKHJCBDHCBQWI",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 6:14:17 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-457193",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "brand": "hand",
+      "category": "Luxury",
+      "verificationId": "KLDICJKHJCBDHCBQWI",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 6:14:17 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "vinodh_ 404",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "userId": "user-1789735414343-ouid",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-368075",
+      "productId": "prod-genesis-001",
+      "productName": "Aethel Chrono Grand Tourbillon",
+      "brand": "Aethel Horology",
+      "category": "Luxury",
+      "verificationId": "TT-LUX-9941",
+      "status": "authentic",
+      "scannedAt": "18/9/2026, 5:56:08 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "Public Verified Consumer",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    }
+  ],
+  "scanHistory": [
+    {
+      "id": "scan-258572",
+      "scanCode": "TTLUXMTRU",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "09:30 pm",
+      "method": "manual",
+      "productId": "prod-186062",
+      "productName": "TABLETS",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-240228",
+      "scanCode": "KLDICJKHJCBDHCBQWI",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "09:30 pm",
+      "method": "manual",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-018007",
+      "scanCode": "TT-QR-PLAI-5062",
+      "result": "not_found",
+      "date": "18/9/2026",
+      "time": "09:26 pm",
+      "method": "upload",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "QR token not associated with any registered product on the blockchain"
+    },
+    {
+      "id": "scan-863898",
+      "scanCode": "rrtteeww",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "09:24 pm",
+      "method": "manual",
+      "productId": "prod-831086",
+      "productName": "phone",
+      "userId": "user-1789746796015-6q62",
+      "username": "Srinu",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-856455",
+      "scanCode": "DUIEGF",
+      "result": "not_found",
+      "date": "18/9/2026",
+      "time": "09:24 pm",
+      "method": "manual",
+      "userId": "user-1789746796015-6q62",
+      "username": "Srinu",
+      "details": "QR token not associated with any registered product on the blockchain"
+    },
+    {
+      "id": "scan-303919",
+      "scanCode": "KLDICJKHJCBDHCBQWI",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "09:15 pm",
+      "method": "manual",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-101170",
+      "scanCode": "tt yyr rrrr",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "08:55 pm",
+      "method": "manual",
+      "productId": "prod-713441",
+      "productName": "watch",
+      "userId": "user-1789745050905-0at1",
+      "username": "Venkata",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-770391",
+      "scanCode": "SN223311YY",
+      "result": "not_found",
+      "date": "18/9/2026",
+      "time": "08:49 pm",
+      "method": "manual",
+      "userId": "user-1789744661547-s1qx",
+      "username": "vinodh_ 404",
+      "details": "QR token not associated with any registered product on the blockchain"
+    },
+    {
+      "id": "scan-727501",
+      "scanCode": "tt yyr rrrr",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "08:48 pm",
+      "method": "manual",
+      "productId": "prod-713441",
+      "productName": "watch",
+      "userId": "user-1789744661547-s1qx",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-515935",
+      "scanCode": "TT-QR-PLAI-1997",
+      "result": "not_found",
+      "date": "18/9/2026",
+      "time": "06:15 pm",
+      "method": "upload",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "QR token not associated with any registered product on the blockchain"
+    },
+    {
+      "id": "scan-457262",
+      "scanCode": "KLDICJKHJCBDHCBQWI",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "06:14 pm",
+      "method": "manual",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-457238",
+      "scanCode": "KLDICJKHJCBDHCBQWI",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "06:14 pm",
+      "method": "manual",
+      "productId": "prod-451050",
+      "productName": "watch",
+      "userId": "user-1789735414343-ouid",
+      "username": "vinodh_ 404",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-368116",
+      "scanCode": "TT-LUX-9941",
+      "result": "authentic",
+      "date": "18/9/2026",
+      "time": "05:56 pm",
+      "method": "manual",
+      "productId": "prod-genesis-001",
+      "productName": "Aethel Chrono Grand Tourbillon",
+      "userId": "guest",
+      "username": "Guest",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    }
+  ],
+  "blockchain": {
+    "isTampered": false,
+    "tamperedBlockIndex": null,
+    "originalChainBackup": [
+      {
+        "index": 0,
+        "timestamp": "2025-01-01T00:00:00.000Z",
+        "transactions": [
+          {
+            "id": "tx-genesis-0000",
+            "type": "PRODUCT_MINT",
+            "timestamp": "2025-01-01T00:00:00.000Z",
+            "sku": "TT-GENESIS-PROTOCOL",
+            "productName": "TrueTrace Decentralized Provenance Protocol Genesis",
+            "actor": "System Master Authority",
+            "location": "Geneva Decentralized Node #0",
+            "signature": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "details": {
+              "network": "TrueTrace Security Mainnet",
+              "protocolVersion": "2.4.0",
+              "rootOfTrust": "ISO/IEC 27001 Cryptographic RoT"
+            }
+          }
+        ],
+        "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "difficulty": 2,
+        "validator": "Genesis Authority Node",
+        "nonce": 252,
+        "merkleRoot": "d72fe6ff83774e6a27f89f5fb04859b3adccc0691dbd68d535a47728a7a583a2",
+        "hash": "008692f5f847e3e2ad82d6e69ac6b1257aebbf17e9be61b54b800294d3bba5e2"
+      },
+      {
+        "index": 1,
+        "timestamp": "2026-09-18T12:26:07.862Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TT-LUX-9941",
+            "productId": "prod-genesis-001",
+            "productName": "Aethel Chrono Grand Tourbillon",
+            "actor": "Atelier de Haute Horlogerie SA",
+            "location": "Geneva Atelier, Switzerland",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-CHRONO-2025-Q1",
+              "registeredBy": "admin-001"
+            },
+            "id": "tx-1789734367861-b17f22",
+            "timestamp": "2026-09-18T12:26:07.861Z",
+            "signature": "0xb8351be18a2f1d0d533a79fa9c13e3071fa75ef3dae388990714d0e38313f87c"
+          }
+        ],
+        "previousHash": "008692f5f847e3e2ad82d6e69ac6b1257aebbf17e9be61b54b800294d3bba5e2",
+        "difficulty": 2,
+        "validator": "Geneva Validator Node #1",
+        "nonce": 271,
+        "merkleRoot": "44191cfb4970dfa815f9284b64413c22660156018839d485eee888d18e761ffb",
+        "hash": "002769e8e1143cb5087c48ecbf79fb9ccb4b73fefa0d745c0109cfc82e879a0d"
+      },
+      {
+        "index": 2,
+        "timestamp": "2026-09-18T12:26:08.117Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "TT-LUX-9941",
+            "productId": "prod-genesis-001",
+            "productName": "Aethel Chrono Grand Tourbillon",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789734368117-ecfc19",
+            "timestamp": "2026-09-18T12:26:08.117Z",
+            "signature": "0x3eeedc3c0a7824770e64e932ccd70d479e6a668c05a43cd597ca25dd1c312195"
+          }
+        ],
+        "previousHash": "002769e8e1143cb5087c48ecbf79fb9ccb4b73fefa0d745c0109cfc82e879a0d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 593,
+        "merkleRoot": "8286eb0be609bf34b42a708b813b74606eb0a4f59c70c89bc7c60a08bfcd8086",
+        "hash": "0066c0a74a0c73adee71e0330e7a1caa3ef3606efcdc40eac4283e5806ef275b"
+      },
+      {
+        "index": 3,
+        "timestamp": "2026-09-18T12:44:11.051Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "hand",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789735451051-b1762c",
+            "timestamp": "2026-09-18T12:44:11.051Z",
+            "signature": "0x3a4678e9cba339017740c0abae9e52bf41437f6fd7c8b83d3c9ec0ce7e226464"
+          }
+        ],
+        "previousHash": "0066c0a74a0c73adee71e0330e7a1caa3ef3606efcdc40eac4283e5806ef275b",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 267,
+        "merkleRoot": "c2b30810e93512a6b9b60dba98b7676ea557454d58ed379d41621b6be9c294e7",
+        "hash": "00ad469e7f3eb9ac963cb9e889e739712709905d05cee6e4e5d0c8293f928282"
+      },
+      {
+        "index": 4,
+        "timestamp": "2026-09-18T12:44:17.240Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789735457240-b9141f",
+            "timestamp": "2026-09-18T12:44:17.240Z",
+            "signature": "0xacd878031ec2cc54beba7bbe835fe6909c87f792d40bb923c05a8df1d7cd598a"
+          }
+        ],
+        "previousHash": "00ad469e7f3eb9ac963cb9e889e739712709905d05cee6e4e5d0c8293f928282",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 219,
+        "merkleRoot": "a98ed8a7a7d6d47fc6e17da634fa96d92af1f41dc1f54b42ce5d4ccf009a8d75",
+        "hash": "008f72966c886cfc20494631a162b3181d4f180c458270d946afa2e1f401f2c9"
+      },
+      {
+        "index": 5,
+        "timestamp": "2026-09-18T12:44:17.264Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789735457263-da9723",
+            "timestamp": "2026-09-18T12:44:17.263Z",
+            "signature": "0x63cd82493fe0e826f57c26a4eba32a7bc485f5cd7558f381f3d733cfc869fd6f"
+          }
+        ],
+        "previousHash": "008f72966c886cfc20494631a162b3181d4f180c458270d946afa2e1f401f2c9",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 262,
+        "merkleRoot": "829a84d095505cc382b34c1c8aba86ec846fd1b25ec1b4f9cd2f380e52afe16f",
+        "hash": "00e66b5f51865ef3833286d455011e95356c8b45ba60b7ad4d69348bf13810f8"
+      },
+      {
+        "index": 6,
+        "timestamp": "2026-09-18T12:45:15.936Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "TT-QR-PLAI-1997",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789735515936-893e9b",
+            "timestamp": "2026-09-18T12:45:15.936Z",
+            "signature": "0x018a96c0611b4ac55c8510eacc1dd0e7a007123a43d51373bf2853816e019efd"
+          }
+        ],
+        "previousHash": "00e66b5f51865ef3833286d455011e95356c8b45ba60b7ad4d69348bf13810f8",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 55,
+        "merkleRoot": "125882d753b6f3d78d231b22f6f6a1a653f33e66be75c6db1d739d893a95af7c",
+        "hash": "00ccd97dcef52d8fa42c05f72da921f05867517f997aea5e8b7d435fcfeb8ed1"
+      },
+      {
+        "index": 7,
+        "timestamp": "2026-09-18T15:18:33.442Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "hand",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789744661547-s1qx"
+            },
+            "id": "tx-1789744713442-9863f7",
+            "timestamp": "2026-09-18T15:18:33.442Z",
+            "signature": "0xa7da147d5de548ae9a2364ea2b5bf68d9dc9e0bac3a3f20c828179918f1abded"
+          }
+        ],
+        "previousHash": "00ccd97dcef52d8fa42c05f72da921f05867517f997aea5e8b7d435fcfeb8ed1",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 167,
+        "merkleRoot": "7c1be4748a9b4343c5bba63000d4559edc8316162fc6e988a2689991feb1ecb3",
+        "hash": "005e1736c5ecebad540172d29f50316c434638254ea99b14caf1de3bbeb0297a"
+      },
+      {
+        "index": 8,
+        "timestamp": "2026-09-18T15:18:47.503Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789744727502-35f1f8",
+            "timestamp": "2026-09-18T15:18:47.502Z",
+            "signature": "0xb7986c1d3ceddaf82901e6f80755f34fed1228b630bbcc12e29ca04e4f7e6f6a"
+          }
+        ],
+        "previousHash": "005e1736c5ecebad540172d29f50316c434638254ea99b14caf1de3bbeb0297a",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 873,
+        "merkleRoot": "80fd267aeb9eec5d9ee533d1b5cd1de461a98d5beed3963abd99263d43e707a8",
+        "hash": "005dd78f5a05565ae761571716568fe9613890f0a37d567d37d69fe8e0aacea6"
+      },
+      {
+        "index": 9,
+        "timestamp": "2026-09-18T15:19:30.392Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "SN223311YY",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789744770392-1a01d4",
+            "timestamp": "2026-09-18T15:19:30.392Z",
+            "signature": "0xa35a9a98a720902a3f737a43e46c96cae5f41ff1edf98d206d173abdfe9f3771"
+          }
+        ],
+        "previousHash": "005dd78f5a05565ae761571716568fe9613890f0a37d567d37d69fe8e0aacea6",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 110,
+        "merkleRoot": "11b1bb82e93c9bb3619c022a4b76c0e7dc439f1217b7187bdc9fcb366e686967",
+        "hash": "008fb198e5b36f7c2b23c5400d93e13428898962f24f06f9b3b7fd74e0c094f8"
+      },
+      {
+        "index": 10,
+        "timestamp": "2026-09-18T15:25:01.171Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "Venkata",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789745101171-33a526",
+            "timestamp": "2026-09-18T15:25:01.171Z",
+            "signature": "0x4593d7ce4fafdc0a2048bcf8de550e721a8eff24e8f8aa04b40e0e53bb662064"
+          }
+        ],
+        "previousHash": "008fb198e5b36f7c2b23c5400d93e13428898962f24f06f9b3b7fd74e0c094f8",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 35,
+        "merkleRoot": "f32bd2169fe9e0fe86d1fc070315966abc0c3a2497194ad8e9dd5bc842705ac9",
+        "hash": "008c2c06d82417662fda45e1a50dabf09783ecdae21526f72700d177aa256082"
+      },
+      {
+        "index": 11,
+        "timestamp": "2026-09-18T15:45:03.921Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 3
+            },
+            "id": "tx-1789746303921-b98c0f",
+            "timestamp": "2026-09-18T15:45:03.921Z",
+            "signature": "0x5f76f74214687a7a84981426d90673293393a3c244ee7d5894e8c596bf14d33f"
+          }
+        ],
+        "previousHash": "008c2c06d82417662fda45e1a50dabf09783ecdae21526f72700d177aa256082",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 168,
+        "merkleRoot": "188ad9afa375ba67aa7f811ce44443737ac6a51b1ac6172b48b6ce5124e3e0e7",
+        "hash": "00f75530329596a4a2b2081c6f84e12e9878c9c63fca6d1e78acee4d56bee1ac"
+      },
+      {
+        "index": 12,
+        "timestamp": "2026-09-18T15:53:51.086Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "rrtteeww",
+            "productId": "prod-831086",
+            "productName": "phone",
+            "actor": "fasttrack",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789746796015-6q62"
+            },
+            "id": "tx-1789746831086-1e168c",
+            "timestamp": "2026-09-18T15:53:51.086Z",
+            "signature": "0xb271a9b4331182735c0bec0f112f9579f04d427a7445a5479d42933cdfb8d3d5"
+          }
+        ],
+        "previousHash": "00f75530329596a4a2b2081c6f84e12e9878c9c63fca6d1e78acee4d56bee1ac",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 490,
+        "merkleRoot": "4911a1eddcfefa7a8e190cac499521ebcaf803248b0232b3154d0583360ca94f",
+        "hash": "0085019b0343d3ee0c5efdd7d80d1213052209dbb5ebec759c8a0199dceb2a9f"
+      },
+      {
+        "index": 13,
+        "timestamp": "2026-09-18T15:54:16.456Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "DUIEGF",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789746856455-845b37",
+            "timestamp": "2026-09-18T15:54:16.455Z",
+            "signature": "0x682325363fa32aaa024911d42dcb0aa44322e7aef322fd1592987310429721cb"
+          }
+        ],
+        "previousHash": "0085019b0343d3ee0c5efdd7d80d1213052209dbb5ebec759c8a0199dceb2a9f",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 63,
+        "merkleRoot": "dc8275cd19775017f3af93ddc6e7439e2904c5f56fa59bafdd6d120844be4694",
+        "hash": "004037552101bf238a00d2d3455c2912f77fec36ee5de8fbfb0ce32d6deac0e7"
+      },
+      {
+        "index": 14,
+        "timestamp": "2026-09-18T15:54:23.899Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "rrtteeww",
+            "productId": "prod-831086",
+            "productName": "phone",
+            "actor": "Srinu",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789746863899-554829",
+            "timestamp": "2026-09-18T15:54:23.899Z",
+            "signature": "0x9473d281645d1fb25a688dec96a9b1d4175be29b428d49f56058c2c513ea85ff"
+          }
+        ],
+        "previousHash": "004037552101bf238a00d2d3455c2912f77fec36ee5de8fbfb0ce32d6deac0e7",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 191,
+        "merkleRoot": "957600a091e3582d2bc8fa25e0496f1173b907336d9fa8c66b864319c25e4920",
+        "hash": "007ac39518f893149e808b68ff36a25dce492183b71b318243a8ef765633633d"
+      },
+      {
+        "index": 15,
+        "timestamp": "2026-09-18T15:56:58.009Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "TT-QR-PLAI-5062",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789747018008-1c3f1c",
+            "timestamp": "2026-09-18T15:56:58.008Z",
+            "signature": "0x5989c3f18d1d313762895ef59799d81f9bd040dc83acc442843257727e4ffc26"
+          }
+        ],
+        "previousHash": "007ac39518f893149e808b68ff36a25dce492183b71b318243a8ef765633633d",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 82,
+        "merkleRoot": "2434d1f854fdf2b0f8f87a204c9c44ce95ea3f9c9806598c3f4b8461f62c028f",
+        "hash": "006156a78812a6a47087de925aaeec2ce258be02198db27441c1cd2c3024ec98"
+      },
+      {
+        "index": 16,
+        "timestamp": "2026-09-18T15:58:08.436Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "YYTTEERR",
+            "productId": "prod-088436",
+            "productName": "PHONE",
+            "actor": "NOTHING",
+            "location": "USA",
+            "details": {
+              "category": "Electronics",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747088436-25fb67",
+            "timestamp": "2026-09-18T15:58:08.436Z",
+            "signature": "0xcf456fd37433cbd57beb98e27ef9a1542c97817d2bf03b0197409b190ac58811"
+          }
+        ],
+        "previousHash": "006156a78812a6a47087de925aaeec2ce258be02198db27441c1cd2c3024ec98",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 365,
+        "merkleRoot": "56ad6960d5c41a7a658664625a533841d4b305d5299bb8f2de7add64326a3040",
+        "hash": "00c8dec1efa70b4b89f01e2393770c19b5aadf4899f81207a68f9994f8c396dc"
+      },
+      {
+        "index": 17,
+        "timestamp": "2026-09-18T15:58:41.451Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TT22YY66",
+            "productId": "prod-121451",
+            "productName": "EARPHONES",
+            "actor": "INDIA",
+            "location": "USA",
+            "details": {
+              "category": "Automotive",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747121451-71ff8d",
+            "timestamp": "2026-09-18T15:58:41.451Z",
+            "signature": "0x771acceb056afe95bd7e3783d7a42469f17f29a6c1dfe0329351e45e382d4060"
+          }
+        ],
+        "previousHash": "00c8dec1efa70b4b89f01e2393770c19b5aadf4899f81207a68f9994f8c396dc",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 238,
+        "merkleRoot": "dfce93b1b6cec7467e405cf59193cc48ebd8aab93fb14a63e4ecffa4ec50d5d9",
+        "hash": "00c6cbee4aaf4698f530a65c8ea8a23ad0722fe416d2e936c931112768df0aef"
+      },
+      {
+        "index": 18,
+        "timestamp": "2026-09-18T15:59:46.063Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TTLUXMTRU",
+            "productId": "prod-186062",
+            "productName": "TABLETS",
+            "actor": "INDIA",
+            "location": "UK",
+            "details": {
+              "category": "Pharmaceuticals",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747186062-fd3cf7",
+            "timestamp": "2026-09-18T15:59:46.062Z",
+            "signature": "0x2defd6e3fb1834407810b573da2020655f10d948effca571736d2d0da6f849a8"
+          }
+        ],
+        "previousHash": "00c6cbee4aaf4698f530a65c8ea8a23ad0722fe416d2e936c931112768df0aef",
+        "difficulty": 2,
+        "validator": "Validator Node (UK)",
+        "nonce": 67,
+        "merkleRoot": "dfa7f9aa9f47482af59177d2d9b6fdeabd6e07d5f7fc75d99ca7467f9f48db5b",
+        "hash": "0019b249afc2966d4cbdf768a97da2c1d04a93e3d496da0d1122acf8d167851c"
+      },
+      {
+        "index": 19,
+        "timestamp": "2026-09-18T16:00:15.182Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TTRRSS33",
+            "productId": "prod-215181",
+            "productName": "book",
+            "actor": "INDIA",
+            "location": "USA",
+            "details": {
+              "category": "Apparel",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747215182-ac9b1a",
+            "timestamp": "2026-09-18T16:00:15.182Z",
+            "signature": "0x8a9b01ef8c9bb1fd2643347c94b0069ab6034b536a7e3f1ef716366581a97157"
+          }
+        ],
+        "previousHash": "0019b249afc2966d4cbdf768a97da2c1d04a93e3d496da0d1122acf8d167851c",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 886,
+        "merkleRoot": "6d25a4796158070fc39f4e4479a53beb70e1ff5003476a031cd13ca1939e493e",
+        "hash": "003d681c0631c8d124c421474da1256807fdcbcfc146c4cc96a9ec704aec5a5d"
+      },
+      {
+        "index": 20,
+        "timestamp": "2026-09-18T16:00:40.234Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 4
+            },
+            "id": "tx-1789747240234-b49b14",
+            "timestamp": "2026-09-18T16:00:40.234Z",
+            "signature": "0x14a764d50597a0c3331b2eae224a22598a40db9524e2d0a89060008f92427dbe"
+          }
+        ],
+        "previousHash": "003d681c0631c8d124c421474da1256807fdcbcfc146c4cc96a9ec704aec5a5d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 46,
+        "merkleRoot": "4f4fe1411b49aa1f698a0e9299be7b07be389904b2a8cdd3257f3041430f0915",
+        "hash": "00a0768aa675f9b5f563e05e96012b00d67e2c762b3f2d6ffccfa92ccfca8a64"
+      },
+      {
+        "index": 21,
+        "timestamp": "2026-09-18T16:00:58.574Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "TTLUXMTRU",
+            "productId": "prod-186062",
+            "productName": "TABLETS",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789747258574-ab9279",
+            "timestamp": "2026-09-18T16:00:58.574Z",
+            "signature": "0xc9f0d2e9f66db1403534f7819094e0c9be2a18f3560421308b5b0d50ee24a7f7"
+          }
+        ],
+        "previousHash": "00a0768aa675f9b5f563e05e96012b00d67e2c762b3f2d6ffccfa92ccfca8a64",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 142,
+        "merkleRoot": "fcffcecbac1ef8344f0f3698dda011d9a29490aaf4b056685713c8564ec09312",
+        "hash": "00553e078ad3b080294131ac025b6ae6bee2f34519c6c7a8688dcd8b7a543fce"
+      }
+    ],
+    "chain": [
+      {
+        "index": 0,
+        "timestamp": "2025-01-01T00:00:00.000Z",
+        "transactions": [
+          {
+            "id": "tx-genesis-0000",
+            "type": "PRODUCT_MINT",
+            "timestamp": "2025-01-01T00:00:00.000Z",
+            "sku": "TT-GENESIS-PROTOCOL",
+            "productName": "TrueTrace Decentralized Provenance Protocol Genesis",
+            "actor": "System Master Authority",
+            "location": "Geneva Decentralized Node #0",
+            "signature": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "details": {
+              "network": "TrueTrace Security Mainnet",
+              "protocolVersion": "2.4.0",
+              "rootOfTrust": "ISO/IEC 27001 Cryptographic RoT"
+            }
+          }
+        ],
+        "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "difficulty": 2,
+        "validator": "Genesis Authority Node",
+        "nonce": 252,
+        "merkleRoot": "d72fe6ff83774e6a27f89f5fb04859b3adccc0691dbd68d535a47728a7a583a2",
+        "hash": "008692f5f847e3e2ad82d6e69ac6b1257aebbf17e9be61b54b800294d3bba5e2"
+      },
+      {
+        "index": 1,
+        "timestamp": "2026-09-18T12:26:07.862Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TT-LUX-9941",
+            "productId": "prod-genesis-001",
+            "productName": "Aethel Chrono Grand Tourbillon",
+            "actor": "Atelier de Haute Horlogerie SA",
+            "location": "Geneva Atelier, Switzerland",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-CHRONO-2025-Q1",
+              "registeredBy": "admin-001"
+            },
+            "id": "tx-1789734367861-b17f22",
+            "timestamp": "2026-09-18T12:26:07.861Z",
+            "signature": "0xb8351be18a2f1d0d533a79fa9c13e3071fa75ef3dae388990714d0e38313f87c"
+          }
+        ],
+        "previousHash": "008692f5f847e3e2ad82d6e69ac6b1257aebbf17e9be61b54b800294d3bba5e2",
+        "difficulty": 2,
+        "validator": "Geneva Validator Node #1",
+        "nonce": 271,
+        "merkleRoot": "44191cfb4970dfa815f9284b64413c22660156018839d485eee888d18e761ffb",
+        "hash": "002769e8e1143cb5087c48ecbf79fb9ccb4b73fefa0d745c0109cfc82e879a0d"
+      },
+      {
+        "index": 2,
+        "timestamp": "2026-09-18T12:26:08.117Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "TT-LUX-9941",
+            "productId": "prod-genesis-001",
+            "productName": "Aethel Chrono Grand Tourbillon",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789734368117-ecfc19",
+            "timestamp": "2026-09-18T12:26:08.117Z",
+            "signature": "0x3eeedc3c0a7824770e64e932ccd70d479e6a668c05a43cd597ca25dd1c312195"
+          }
+        ],
+        "previousHash": "002769e8e1143cb5087c48ecbf79fb9ccb4b73fefa0d745c0109cfc82e879a0d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 593,
+        "merkleRoot": "8286eb0be609bf34b42a708b813b74606eb0a4f59c70c89bc7c60a08bfcd8086",
+        "hash": "0066c0a74a0c73adee71e0330e7a1caa3ef3606efcdc40eac4283e5806ef275b"
+      },
+      {
+        "index": 3,
+        "timestamp": "2026-09-18T12:44:11.051Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "hand",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789735451051-b1762c",
+            "timestamp": "2026-09-18T12:44:11.051Z",
+            "signature": "0x3a4678e9cba339017740c0abae9e52bf41437f6fd7c8b83d3c9ec0ce7e226464"
+          }
+        ],
+        "previousHash": "0066c0a74a0c73adee71e0330e7a1caa3ef3606efcdc40eac4283e5806ef275b",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 267,
+        "merkleRoot": "c2b30810e93512a6b9b60dba98b7676ea557454d58ed379d41621b6be9c294e7",
+        "hash": "00ad469e7f3eb9ac963cb9e889e739712709905d05cee6e4e5d0c8293f928282"
+      },
+      {
+        "index": 4,
+        "timestamp": "2026-09-18T12:44:17.240Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789735457240-b9141f",
+            "timestamp": "2026-09-18T12:44:17.240Z",
+            "signature": "0xacd878031ec2cc54beba7bbe835fe6909c87f792d40bb923c05a8df1d7cd598a"
+          }
+        ],
+        "previousHash": "00ad469e7f3eb9ac963cb9e889e739712709905d05cee6e4e5d0c8293f928282",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 219,
+        "merkleRoot": "a98ed8a7a7d6d47fc6e17da634fa96d92af1f41dc1f54b42ce5d4ccf009a8d75",
+        "hash": "008f72966c886cfc20494631a162b3181d4f180c458270d946afa2e1f401f2c9"
+      },
+      {
+        "index": 5,
+        "timestamp": "2026-09-18T12:44:17.264Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789735457263-da9723",
+            "timestamp": "2026-09-18T12:44:17.263Z",
+            "signature": "0x63cd82493fe0e826f57c26a4eba32a7bc485f5cd7558f381f3d733cfc869fd6f"
+          }
+        ],
+        "previousHash": "008f72966c886cfc20494631a162b3181d4f180c458270d946afa2e1f401f2c9",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 262,
+        "merkleRoot": "829a84d095505cc382b34c1c8aba86ec846fd1b25ec1b4f9cd2f380e52afe16f",
+        "hash": "00e66b5f51865ef3833286d455011e95356c8b45ba60b7ad4d69348bf13810f8"
+      },
+      {
+        "index": 6,
+        "timestamp": "2026-09-18T12:45:15.936Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "TT-QR-PLAI-1997",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789735515936-893e9b",
+            "timestamp": "2026-09-18T12:45:15.936Z",
+            "signature": "0x018a96c0611b4ac55c8510eacc1dd0e7a007123a43d51373bf2853816e019efd"
+          }
+        ],
+        "previousHash": "00e66b5f51865ef3833286d455011e95356c8b45ba60b7ad4d69348bf13810f8",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 55,
+        "merkleRoot": "125882d753b6f3d78d231b22f6f6a1a653f33e66be75c6db1d739d893a95af7c",
+        "hash": "00ccd97dcef52d8fa42c05f72da921f05867517f997aea5e8b7d435fcfeb8ed1"
+      },
+      {
+        "index": 7,
+        "timestamp": "2026-09-18T15:18:33.442Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "hand",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789744661547-s1qx"
+            },
+            "id": "tx-1789744713442-9863f7",
+            "timestamp": "2026-09-18T15:18:33.442Z",
+            "signature": "0xa7da147d5de548ae9a2364ea2b5bf68d9dc9e0bac3a3f20c828179918f1abded"
+          }
+        ],
+        "previousHash": "00ccd97dcef52d8fa42c05f72da921f05867517f997aea5e8b7d435fcfeb8ed1",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 167,
+        "merkleRoot": "7c1be4748a9b4343c5bba63000d4559edc8316162fc6e988a2689991feb1ecb3",
+        "hash": "005e1736c5ecebad540172d29f50316c434638254ea99b14caf1de3bbeb0297a"
+      },
+      {
+        "index": 8,
+        "timestamp": "2026-09-18T15:18:47.503Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789744727502-35f1f8",
+            "timestamp": "2026-09-18T15:18:47.502Z",
+            "signature": "0xb7986c1d3ceddaf82901e6f80755f34fed1228b630bbcc12e29ca04e4f7e6f6a"
+          }
+        ],
+        "previousHash": "005e1736c5ecebad540172d29f50316c434638254ea99b14caf1de3bbeb0297a",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 873,
+        "merkleRoot": "80fd267aeb9eec5d9ee533d1b5cd1de461a98d5beed3963abd99263d43e707a8",
+        "hash": "005dd78f5a05565ae761571716568fe9613890f0a37d567d37d69fe8e0aacea6"
+      },
+      {
+        "index": 9,
+        "timestamp": "2026-09-18T15:19:30.392Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "SN223311YY",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789744770392-1a01d4",
+            "timestamp": "2026-09-18T15:19:30.392Z",
+            "signature": "0xa35a9a98a720902a3f737a43e46c96cae5f41ff1edf98d206d173abdfe9f3771"
+          }
+        ],
+        "previousHash": "005dd78f5a05565ae761571716568fe9613890f0a37d567d37d69fe8e0aacea6",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 110,
+        "merkleRoot": "11b1bb82e93c9bb3619c022a4b76c0e7dc439f1217b7187bdc9fcb366e686967",
+        "hash": "008fb198e5b36f7c2b23c5400d93e13428898962f24f06f9b3b7fd74e0c094f8"
+      },
+      {
+        "index": 10,
+        "timestamp": "2026-09-18T15:25:01.171Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "tt yyr rrrr",
+            "productId": "prod-713441",
+            "productName": "watch",
+            "actor": "Venkata",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1789745101171-33a526",
+            "timestamp": "2026-09-18T15:25:01.171Z",
+            "signature": "0x4593d7ce4fafdc0a2048bcf8de550e721a8eff24e8f8aa04b40e0e53bb662064"
+          }
+        ],
+        "previousHash": "008fb198e5b36f7c2b23c5400d93e13428898962f24f06f9b3b7fd74e0c094f8",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 35,
+        "merkleRoot": "f32bd2169fe9e0fe86d1fc070315966abc0c3a2497194ad8e9dd5bc842705ac9",
+        "hash": "008c2c06d82417662fda45e1a50dabf09783ecdae21526f72700d177aa256082"
+      },
+      {
+        "index": 11,
+        "timestamp": "2026-09-18T15:45:03.921Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 3
+            },
+            "id": "tx-1789746303921-b98c0f",
+            "timestamp": "2026-09-18T15:45:03.921Z",
+            "signature": "0x5f76f74214687a7a84981426d90673293393a3c244ee7d5894e8c596bf14d33f"
+          }
+        ],
+        "previousHash": "008c2c06d82417662fda45e1a50dabf09783ecdae21526f72700d177aa256082",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 168,
+        "merkleRoot": "188ad9afa375ba67aa7f811ce44443737ac6a51b1ac6172b48b6ce5124e3e0e7",
+        "hash": "00f75530329596a4a2b2081c6f84e12e9878c9c63fca6d1e78acee4d56bee1ac"
+      },
+      {
+        "index": 12,
+        "timestamp": "2026-09-18T15:53:51.086Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "rrtteeww",
+            "productId": "prod-831086",
+            "productName": "phone",
+            "actor": "fasttrack",
+            "location": "USA",
+            "details": {
+              "category": "Luxury",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789746796015-6q62"
+            },
+            "id": "tx-1789746831086-1e168c",
+            "timestamp": "2026-09-18T15:53:51.086Z",
+            "signature": "0xb271a9b4331182735c0bec0f112f9579f04d427a7445a5479d42933cdfb8d3d5"
+          }
+        ],
+        "previousHash": "00f75530329596a4a2b2081c6f84e12e9878c9c63fca6d1e78acee4d56bee1ac",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 490,
+        "merkleRoot": "4911a1eddcfefa7a8e190cac499521ebcaf803248b0232b3154d0583360ca94f",
+        "hash": "0085019b0343d3ee0c5efdd7d80d1213052209dbb5ebec759c8a0199dceb2a9f"
+      },
+      {
+        "index": 13,
+        "timestamp": "2026-09-18T15:54:16.456Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "DUIEGF",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789746856455-845b37",
+            "timestamp": "2026-09-18T15:54:16.455Z",
+            "signature": "0x682325363fa32aaa024911d42dcb0aa44322e7aef322fd1592987310429721cb"
+          }
+        ],
+        "previousHash": "0085019b0343d3ee0c5efdd7d80d1213052209dbb5ebec759c8a0199dceb2a9f",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 63,
+        "merkleRoot": "dc8275cd19775017f3af93ddc6e7439e2904c5f56fa59bafdd6d120844be4694",
+        "hash": "004037552101bf238a00d2d3455c2912f77fec36ee5de8fbfb0ce32d6deac0e7"
+      },
+      {
+        "index": 14,
+        "timestamp": "2026-09-18T15:54:23.899Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "rrtteeww",
+            "productId": "prod-831086",
+            "productName": "phone",
+            "actor": "Srinu",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789746863899-554829",
+            "timestamp": "2026-09-18T15:54:23.899Z",
+            "signature": "0x9473d281645d1fb25a688dec96a9b1d4175be29b428d49f56058c2c513ea85ff"
+          }
+        ],
+        "previousHash": "004037552101bf238a00d2d3455c2912f77fec36ee5de8fbfb0ce32d6deac0e7",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 191,
+        "merkleRoot": "957600a091e3582d2bc8fa25e0496f1173b907336d9fa8c66b864319c25e4920",
+        "hash": "007ac39518f893149e808b68ff36a25dce492183b71b318243a8ef765633633d"
+      },
+      {
+        "index": 15,
+        "timestamp": "2026-09-18T15:56:58.009Z",
+        "transactions": [
+          {
+            "type": "TAMPER_ALERT",
+            "sku": "TT-QR-PLAI-5062",
+            "productName": "UNREGISTERED_TOKEN",
+            "actor": "Security Audit Monitor",
+            "location": "Public Scan Point",
+            "details": {
+              "anomalyScore": 92,
+              "reason": "Token does not exist on decentralized ledger"
+            },
+            "id": "tx-1789747018008-1c3f1c",
+            "timestamp": "2026-09-18T15:56:58.008Z",
+            "signature": "0x5989c3f18d1d313762895ef59799d81f9bd040dc83acc442843257727e4ffc26"
+          }
+        ],
+        "previousHash": "007ac39518f893149e808b68ff36a25dce492183b71b318243a8ef765633633d",
+        "difficulty": 2,
+        "validator": "TrueTrace Threat Intercept Node",
+        "nonce": 82,
+        "merkleRoot": "2434d1f854fdf2b0f8f87a204c9c44ce95ea3f9c9806598c3f4b8461f62c028f",
+        "hash": "006156a78812a6a47087de925aaeec2ce258be02198db27441c1cd2c3024ec98"
+      },
+      {
+        "index": 16,
+        "timestamp": "2026-09-18T15:58:08.436Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "YYTTEERR",
+            "productId": "prod-088436",
+            "productName": "PHONE",
+            "actor": "NOTHING",
+            "location": "USA",
+            "details": {
+              "category": "Electronics",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747088436-25fb67",
+            "timestamp": "2026-09-18T15:58:08.436Z",
+            "signature": "0xcf456fd37433cbd57beb98e27ef9a1542c97817d2bf03b0197409b190ac58811"
+          }
+        ],
+        "previousHash": "006156a78812a6a47087de925aaeec2ce258be02198db27441c1cd2c3024ec98",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 365,
+        "merkleRoot": "56ad6960d5c41a7a658664625a533841d4b305d5299bb8f2de7add64326a3040",
+        "hash": "00c8dec1efa70b4b89f01e2393770c19b5aadf4899f81207a68f9994f8c396dc"
+      },
+      {
+        "index": 17,
+        "timestamp": "2026-09-18T15:58:41.451Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TT22YY66",
+            "productId": "prod-121451",
+            "productName": "EARPHONES",
+            "actor": "INDIA",
+            "location": "USA",
+            "details": {
+              "category": "Automotive",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747121451-71ff8d",
+            "timestamp": "2026-09-18T15:58:41.451Z",
+            "signature": "0x771acceb056afe95bd7e3783d7a42469f17f29a6c1dfe0329351e45e382d4060"
+          }
+        ],
+        "previousHash": "00c8dec1efa70b4b89f01e2393770c19b5aadf4899f81207a68f9994f8c396dc",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 238,
+        "merkleRoot": "dfce93b1b6cec7467e405cf59193cc48ebd8aab93fb14a63e4ecffa4ec50d5d9",
+        "hash": "00c6cbee4aaf4698f530a65c8ea8a23ad0722fe416d2e936c931112768df0aef"
+      },
+      {
+        "index": 18,
+        "timestamp": "2026-09-18T15:59:46.063Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TTLUXMTRU",
+            "productId": "prod-186062",
+            "productName": "TABLETS",
+            "actor": "INDIA",
+            "location": "UK",
+            "details": {
+              "category": "Pharmaceuticals",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747186062-fd3cf7",
+            "timestamp": "2026-09-18T15:59:46.062Z",
+            "signature": "0x2defd6e3fb1834407810b573da2020655f10d948effca571736d2d0da6f849a8"
+          }
+        ],
+        "previousHash": "00c6cbee4aaf4698f530a65c8ea8a23ad0722fe416d2e936c931112768df0aef",
+        "difficulty": 2,
+        "validator": "Validator Node (UK)",
+        "nonce": 67,
+        "merkleRoot": "dfa7f9aa9f47482af59177d2d9b6fdeabd6e07d5f7fc75d99ca7467f9f48db5b",
+        "hash": "0019b249afc2966d4cbdf768a97da2c1d04a93e3d496da0d1122acf8d167851c"
+      },
+      {
+        "index": 19,
+        "timestamp": "2026-09-18T16:00:15.182Z",
+        "transactions": [
+          {
+            "type": "PRODUCT_MINT",
+            "sku": "TTRRSS33",
+            "productId": "prod-215181",
+            "productName": "book",
+            "actor": "INDIA",
+            "location": "USA",
+            "details": {
+              "category": "Apparel",
+              "batch": "BATCH-2026-01",
+              "registeredBy": "user-1789735414343-ouid"
+            },
+            "id": "tx-1789747215182-ac9b1a",
+            "timestamp": "2026-09-18T16:00:15.182Z",
+            "signature": "0x8a9b01ef8c9bb1fd2643347c94b0069ab6034b536a7e3f1ef716366581a97157"
+          }
+        ],
+        "previousHash": "0019b249afc2966d4cbdf768a97da2c1d04a93e3d496da0d1122acf8d167851c",
+        "difficulty": 2,
+        "validator": "Validator Node (USA)",
+        "nonce": 886,
+        "merkleRoot": "6d25a4796158070fc39f4e4479a53beb70e1ff5003476a031cd13ca1939e493e",
+        "hash": "003d681c0631c8d124c421474da1256807fdcbcfc146c4cc96a9ec704aec5a5d"
+      },
+      {
+        "index": 20,
+        "timestamp": "2026-09-18T16:00:40.234Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "KLDICJKHJCBDHCBQWI",
+            "productId": "prod-451050",
+            "productName": "watch",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 4
+            },
+            "id": "tx-1789747240234-b49b14",
+            "timestamp": "2026-09-18T16:00:40.234Z",
+            "signature": "0x14a764d50597a0c3331b2eae224a22598a40db9524e2d0a89060008f92427dbe"
+          }
+        ],
+        "previousHash": "003d681c0631c8d124c421474da1256807fdcbcfc146c4cc96a9ec704aec5a5d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 46,
+        "merkleRoot": "4f4fe1411b49aa1f698a0e9299be7b07be389904b2a8cdd3257f3041430f0915",
+        "hash": "00a0768aa675f9b5f563e05e96012b00d67e2c762b3f2d6ffccfa92ccfca8a64"
+      },
+      {
+        "index": 21,
+        "timestamp": "2026-09-18T16:00:58.574Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "TTLUXMTRU",
+            "productId": "prod-186062",
+            "productName": "TABLETS",
+            "actor": "vinodh_ 404",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 1
+            },
+            "id": "tx-1789747258574-ab9279",
+            "timestamp": "2026-09-18T16:00:58.574Z",
+            "signature": "0xc9f0d2e9f66db1403534f7819094e0c9be2a18f3560421308b5b0d50ee24a7f7"
+          }
+        ],
+        "previousHash": "00a0768aa675f9b5f563e05e96012b00d67e2c762b3f2d6ffccfa92ccfca8a64",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 142,
+        "merkleRoot": "fcffcecbac1ef8344f0f3698dda011d9a29490aaf4b056685713c8564ec09312",
+        "hash": "00553e078ad3b080294131ac025b6ae6bee2f34519c6c7a8688dcd8b7a543fce"
+      }
+    ],
+    "difficulty": 2,
+    "pendingTransactions": []
+  }
+}
