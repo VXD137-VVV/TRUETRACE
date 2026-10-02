@@ -19,6 +19,7 @@ import {
   Sliders,
   Lock,
   Cpu,
+  Network,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/lib/auth/auth-context';
@@ -42,6 +43,7 @@ export function DashboardSidebar({ isMobileOpen, setIsMobileOpen }: SidebarProps
     { label: 'Products', href: '/dashboard/products', icon: Package },
     { label: 'Verify Product', href: '/dashboard/verify', icon: ShieldCheck, badge: 'Live' },
     { label: 'Blockchain Ledger', href: '/dashboard/blockchain', icon: Cpu, badge: 'SHA-256' },
+    { label: 'P2P Network Nodes', href: '/dashboard/network', icon: Network, badge: 'P2P' },
     { label: 'Scan History', href: '/dashboard/history', icon: History },
     { label: 'Supply Chain', href: '/dashboard/supply-chain', icon: GitBranch },
     { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
@@ -52,6 +54,7 @@ export function DashboardSidebar({ isMobileOpen, setIsMobileOpen }: SidebarProps
     { label: 'Admin Overview', href: '/admin', icon: LayoutDashboard },
     { label: 'User Management', href: '/admin/users', icon: Users, badge: 'Master' },
     { label: 'Blockchain Ledger', href: '/admin/blockchain', icon: Cpu, badge: 'Consensus' },
+    { label: 'P2P Network Nodes', href: '/dashboard/network', icon: Network, badge: '4 Nodes' },
     { label: 'Global Products', href: '/admin/products', icon: Package },
     { label: 'Verification Logs', href: '/admin/verifications', icon: ShieldCheck },
     { label: 'Supply Chain', href: '/dashboard/supply-chain', icon: GitBranch },
