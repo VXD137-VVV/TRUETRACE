@@ -609,10 +609,125 @@ def build_lecturer_impressive_presentation():
         p_desc.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 10: How Website Works: QR Scan -> Verification -> Result
+    # SLIDE 10: Frontend Showcase (Page 1: Workspace & Blockchain Explorer)
     # =========================================================================
     s10 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s10, "How the Website Works: QR Scan -> Verification -> Result")
+    add_slide_header(s10, "Website Frontend Showcase (Workspace & Blockchain Explorer)")
+
+    img_dir = os.path.expanduser("~/Desktop/TrueTrace_Screenshots")
+    img_dash = os.path.join(img_dir, "02_dashboard_overview.png")
+    img_block = os.path.join(img_dir, "04_blockchain_explorer.png")
+
+    if os.path.exists(img_dash):
+        s10.shapes.add_picture(img_dash, Inches(0.8), Inches(1.65), Inches(5.7), Inches(3.2))
+    card_s10_l = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(4.95), Inches(5.7), Inches(2.15))
+    card_s10_l.fill.solid()
+    card_s10_l.fill.fore_color.rgb = COLOR_BG_CARD
+    card_s10_l.line.color.rgb = COLOR_RED
+    card_s10_l.line.width = Pt(1.5)
+    tf10l = card_s10_l.text_frame
+    tf10l.word_wrap = True
+    tf10l.margin_left = tf10l.margin_top = tf10l.margin_right = tf10l.margin_bottom = Inches(0.18)
+    p = tf10l.paragraphs[0]
+    p.text = "AUTHENTICATED BRAND & AUDITOR WORKSPACE"
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_RED
+    p_body = tf10l.add_paragraph()
+    p_body.text = (
+        "The TrueTrace dashboard implements a glassmorphic Dark Midnight Navy interface (#0B1220) providing real-time telemetry, "
+        "synchronized workspace ledger status, active product asset counts, and instantaneous shortcuts to optical micro-seal scanning. "
+        "Dynamic 0-state onboarding prompts guide new brand administrators through initial asset registration."
+    )
+    p_body.font.size = Pt(10)
+    p_body.font.color.rgb = COLOR_TEXT
+
+    if os.path.exists(img_block):
+        s10.shapes.add_picture(img_block, Inches(6.8), Inches(1.65), Inches(5.7), Inches(3.2))
+    card_s10_r = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(4.95), Inches(5.7), Inches(2.15))
+    card_s10_r.fill.solid()
+    card_s10_r.fill.fore_color.rgb = COLOR_BG_CARD
+    card_s10_r.line.color.rgb = COLOR_CYAN
+    card_s10_r.line.width = Pt(1.5)
+    tf10r = card_s10_r.text_frame
+    tf10r.word_wrap = True
+    tf10r.margin_left = tf10r.margin_top = tf10r.margin_right = tf10r.margin_bottom = Inches(0.18)
+    p = tf10r.paragraphs[0]
+    p.text = "DECENTRALIZED SHA-256 BLOCKCHAIN EXPLORER"
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_CYAN
+    p_body = tf10r.add_paragraph()
+    p_body.text = (
+        "Provides comprehensive transparency into mined blocks, SHA-256 linkage hashes, previous hashes, and Proof-of-Work nonces "
+        "matching difficulty target 00... Features the interactive 'Simulate Malicious Tampering' demonstration tool, allowing evaluators "
+        "to modify database records and witness instantaneous hash cascade failure across subsequent blocks in real time."
+    )
+    p_body.font.size = Pt(10)
+    p_body.font.color.rgb = COLOR_TEXT
+
+    # =========================================================================
+    # SLIDE 11: Frontend Showcase (Page 2: P2P Network Nodes & Global Telemetry)
+    # =========================================================================
+    s11 = prs.slides.add_slide(blank_layout)
+    add_slide_header(s11, "Website Frontend Showcase (P2P Nodes & Global Telemetry)")
+
+    img_net = os.path.join(img_dir, "05_p2p_network_nodes.png")
+    img_map = os.path.join(img_dir, "07_supply_chain_map.png")
+
+    if os.path.exists(img_net):
+        s11.shapes.add_picture(img_net, Inches(0.8), Inches(1.65), Inches(5.7), Inches(3.2))
+    card_s11_l = s11.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(4.95), Inches(5.7), Inches(2.15))
+    card_s11_l.fill.solid()
+    card_s11_l.fill.fore_color.rgb = COLOR_BG_CARD
+    card_s11_l.line.color.rgb = COLOR_RED
+    card_s11_l.line.width = Pt(1.5)
+    tf11l = card_s11_l.text_frame
+    tf11l.word_wrap = True
+    tf11l.margin_left = tf11l.margin_top = tf11l.margin_right = tf11l.margin_bottom = Inches(0.18)
+    p = tf11l.paragraphs[0]
+    p.text = "DISTRIBUTED MULTI-SYSTEM P2P NETWORK CONSOLE"
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_RED
+    p_body = tf11l.add_paragraph()
+    p_body.text = (
+        "Demonstrates real-time multi-system client-server synchronization across four decentralized entities: Server Authority, "
+        "Mobile Phone Retailer, Manufacturer Atelier, and Customs Logistics Port. Provides an automated QR pairing code enabling mobile "
+        "smartphones on the local Wi-Fi to connect directly over port 3000 and broadcast gossip synchronization blocks."
+    )
+    p_body.font.size = Pt(10)
+    p_body.font.color.rgb = COLOR_TEXT
+
+    if os.path.exists(img_map):
+        s11.shapes.add_picture(img_map, Inches(6.8), Inches(1.65), Inches(5.7), Inches(3.2))
+    card_s11_r = s11.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(4.95), Inches(5.7), Inches(2.15))
+    card_s11_r.fill.solid()
+    card_s11_r.fill.fore_color.rgb = COLOR_BG_CARD
+    card_s11_r.line.color.rgb = COLOR_CYAN
+    card_s11_r.line.width = Pt(1.5)
+    tf11r = card_s11_r.text_frame
+    tf11r.word_wrap = True
+    tf11r.margin_left = tf11r.margin_top = tf11r.margin_right = tf11r.margin_bottom = Inches(0.18)
+    p = tf11r.paragraphs[0]
+    p.text = "GLOBAL CRYPTOGRAPHIC CUSTODY NETWORK (142 HUBS)"
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_CYAN
+    p_body = tf11r.add_paragraph()
+    p_body.text = (
+        "Visualizes interactive worldwide transit routing topology across 142 synchronized logistics nodes. Displays live telemetry "
+        "including in-transit consignment counts, 99.4% on-time delivery rates, cold chain compliance telemetry, and automated "
+        "tamper-block counters, ensuring continuous end-to-end accountability across international borders."
+    )
+    p_body.font.size = Pt(10)
+    p_body.font.color.rgb = COLOR_TEXT
+
+    # =========================================================================
+    # SLIDE 12: How Website Works: QR Scan -> Verification -> Result
+    # =========================================================================
+    s12_flow = prs.slides.add_slide(blank_layout)
+    add_slide_header(s12_flow, "How the Website Works: QR Scan -> Verification -> Result")
 
     flow_steps = [
         ("STAGE 1: OPTICAL TOKEN INGESTION & DECODING", 
@@ -632,7 +747,7 @@ def build_lecturer_impressive_presentation():
          Inches(6.8), Inches(4.45))
     ]
     for title, desc, left, top in flow_steps:
-        card = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
+        card = s12_flow.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
         card.fill.solid()
         card.fill.fore_color.rgb = COLOR_BG_CARD
         card.line.color.rgb = COLOR_NAVY
@@ -651,20 +766,20 @@ def build_lecturer_impressive_presentation():
         p_desc.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 11: AI + Blockchain Role in the Proposed System
+    # SLIDE 13: Role of AI and Blockchain in TrueTrace
     # =========================================================================
-    s11 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s11, "Role of AI and Blockchain in TrueTrace")
+    s13_ai = prs.slides.add_slide(blank_layout)
+    add_slide_header(s13_ai, "Role of AI and Blockchain in TrueTrace")
 
-    card11a = s11.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.7), Inches(5.7), Inches(5.2))
-    card11a.fill.solid()
-    card11a.fill.fore_color.rgb = COLOR_BG_CARD
-    card11a.line.color.rgb = COLOR_BORDER
-    card11a.line.width = Pt(1.5)
-    tf11a = card11a.text_frame
-    tf11a.word_wrap = True
-    tf11a.margin_left = tf11a.margin_top = tf11a.margin_right = tf11a.margin_bottom = Inches(0.28)
-    p = tf11a.paragraphs[0]
+    card13a = s13_ai.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.7), Inches(5.7), Inches(5.2))
+    card13a.fill.solid()
+    card13a.fill.fore_color.rgb = COLOR_BG_CARD
+    card13a.line.color.rgb = COLOR_BORDER
+    card13a.line.width = Pt(1.5)
+    tf13a = card13a.text_frame
+    tf13a.word_wrap = True
+    tf13a.margin_left = tf13a.margin_top = tf13a.margin_right = tf13a.margin_bottom = Inches(0.28)
+    p = tf13a.paragraphs[0]
     p.text = "THE EMBEDDED BLOCKCHAIN: CRYPTOGRAPHIC ANCHOR OF TRUTH"
     p.font.size = Pt(11.5)
     p.font.bold = True
@@ -684,20 +799,20 @@ def build_lecturer_impressive_presentation():
         "would require an attacker to re-calculate proof-of-work across all subsequent blocks faster than legitimate nodes, making retroactive data "
         "falsification computationally impossible and establishing a zero-trust audit record."
     )
-    p_body = tf11a.add_paragraph()
+    p_body = tf13a.add_paragraph()
     p_body.text = b_text
     p_body.font.size = Pt(10.5)
     p_body.font.color.rgb = COLOR_TEXT
 
-    card11b = s11.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(1.7), Inches(5.7), Inches(5.2))
-    card11b.fill.solid()
-    card11b.fill.fore_color.rgb = COLOR_BG_CARD
-    card11b.line.color.rgb = COLOR_BORDER
-    card11b.line.width = Pt(1.5)
-    tf11b = card11b.text_frame
-    tf11b.word_wrap = True
-    tf11b.margin_left = tf11b.margin_top = tf11b.margin_right = tf11b.margin_bottom = Inches(0.28)
-    p = tf11b.paragraphs[0]
+    card13b = s13_ai.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(1.7), Inches(5.7), Inches(5.2))
+    card13b.fill.solid()
+    card13b.fill.fore_color.rgb = COLOR_BG_CARD
+    card13b.line.color.rgb = COLOR_BORDER
+    card13b.line.width = Pt(1.5)
+    tf13b = card13b.text_frame
+    tf13b.word_wrap = True
+    tf13b.margin_left = tf13b.margin_top = tf13b.margin_right = tf13b.margin_bottom = Inches(0.28)
+    p = tf13b.paragraphs[0]
     p.text = "THE AI ANOMALY ENGINE: DYNAMIC HEURISTIC DEFENDER"
     p.font.size = Pt(11.5)
     p.font.bold = True
@@ -717,16 +832,16 @@ def build_lecturer_impressive_presentation():
         "simultaneously for a single physical SKU, the AI escalates the counterfeit probability score to 99%, notifies brand managers via automated "
         "security alerts, and advises consumers to withhold purchase."
     )
-    p_body2 = tf11b.add_paragraph()
+    p_body2 = tf13b.add_paragraph()
     p_body2.text = ai_text
     p_body2.font.size = Pt(10.5)
     p_body2.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 12: Database / Backend / API Flow
+    # SLIDE 14: Database / Backend / API Flow
     # =========================================================================
-    s12 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s12, "Database, Backend & RESTful API Pipeline")
+    s14_db = prs.slides.add_slide(blank_layout)
+    add_slide_header(s14_db, "Database, Backend & RESTful API Pipeline")
 
     db_cards = [
         ("SERVERLESS REST ROUTE HANDLERS (/api/*)", 
@@ -746,7 +861,7 @@ def build_lecturer_impressive_presentation():
          Inches(6.8), Inches(4.45))
     ]
     for title, desc, left, top in db_cards:
-        card = s12.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
+        card = s14_db.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
         card.fill.solid()
         card.fill.fore_color.rgb = COLOR_BG_CARD
         card.line.color.rgb = COLOR_RED
@@ -765,10 +880,10 @@ def build_lecturer_impressive_presentation():
         p_desc.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 13: Results, Features & Conclusion
+    # SLIDE 15: Results, Features & Conclusion
     # =========================================================================
-    s13 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s13, "Results, Key Features & Conclusion")
+    s15_res = prs.slides.add_slide(blank_layout)
+    add_slide_header(s15_res, "Results, Key Features & Conclusion")
 
     res_cards = [
         ("EMPIRICALLY DEMONSTRATED RESULTS & PERFORMANCE BENCHMARKS", 
@@ -781,7 +896,7 @@ def build_lecturer_impressive_presentation():
     ]
     for idx, (title, desc) in enumerate(res_cards):
         top = Inches(1.7) if idx == 0 else Inches(4.45)
-        card = s13.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), top, Inches(11.733), Inches(2.55))
+        card = s15_res.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), top, Inches(11.733), Inches(2.55))
         card.fill.solid()
         card.fill.fore_color.rgb = COLOR_BG_CARD
         card.line.color.rgb = COLOR_NAVY
@@ -800,10 +915,10 @@ def build_lecturer_impressive_presentation():
         p_desc.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 14: Future Scope
+    # SLIDE 16: Future Scope
     # =========================================================================
-    s14 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s14, "Future Scope")
+    s16_fut = prs.slides.add_slide(blank_layout)
+    add_slide_header(s16_fut, "Future Scope")
 
     roadmap = [
         ("PHASE 1: CRYPTOGRAPHIC NFC & RFID HARDWARE INTEGRATION", 
@@ -823,7 +938,7 @@ def build_lecturer_impressive_presentation():
          Inches(6.8), Inches(4.45))
     ]
     for title, desc, left, top in roadmap:
-        card = s14.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
+        card = s16_fut.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, Inches(5.7), Inches(2.55))
         card.fill.solid()
         card.fill.fore_color.rgb = COLOR_BG_CARD
         card.line.color.rgb = COLOR_NAVY
@@ -842,12 +957,12 @@ def build_lecturer_impressive_presentation():
         p_desc.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 15: Reference
+    # SLIDE 17: Reference
     # =========================================================================
-    s15 = prs.slides.add_slide(blank_layout)
-    add_slide_header(s15, "Reference")
+    s17_ref = prs.slides.add_slide(blank_layout)
+    add_slide_header(s17_ref, "Reference")
 
-    ref_box = s15.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(11.733), Inches(5.0))
+    ref_box = s17_ref.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(11.733), Inches(5.0))
     tf_r = ref_box.text_frame
     tf_r.word_wrap = True
 
@@ -877,10 +992,10 @@ def build_lecturer_impressive_presentation():
         r3.font.color.rgb = COLOR_TEXT
 
     # =========================================================================
-    # SLIDE 16: Thank You
+    # SLIDE 18: Thank You
     # =========================================================================
-    s16 = prs.slides.add_slide(blank_layout)
-    ty_card = s16.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.5), Inches(1.2), Inches(10.333), Inches(5.1))
+    s18_ty = prs.slides.add_slide(blank_layout)
+    ty_card = s18_ty.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.5), Inches(1.2), Inches(10.333), Inches(5.1))
     ty_card.fill.solid()
     ty_card.fill.fore_color.rgb = COLOR_BG_CARD
     ty_card.line.color.rgb = COLOR_RED
