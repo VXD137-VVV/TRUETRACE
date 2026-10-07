@@ -20,15 +20,69 @@ import {
 import { useUserData } from '@/lib/data/user-data-context';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Product } from '@/lib/types';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { products } = useUserData();
   const [copied, setCopied] = useState(false);
+  const [serverProduct, setServerProduct] = useState<Product | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const productId = params?.id as string;
-  const product = products.find((p) => p.id === productId || p.sku === productId);
+
+  React.useEffect(() => {
+    if (!productId) return;
+    const local = products.find(
+      (p) =>
+        p.id === productId ||
+        p.sku.toUpperCase() === productId.toUpperCase() ||
+        p.id.toUpperCase() === productId.toUpperCase()
+    );
+    if (local) {
+      setServerProduct(local);
+      setIsLoading(false);
+      return;
+    }
+
+    // Fallback: fetch from central server database
+    fetch('/api/products?t=' + Date.now())
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.products)) {
+          const clean = productId.trim().toUpperCase();
+          const found = json.products.find(
+            (p: any) =>
+              p.id.toUpperCase() === clean ||
+              p.sku.toUpperCase() === clean ||
+              p.name.toUpperCase().includes(clean)
+          );
+          if (found) {
+            setServerProduct(found);
+          }
+        }
+      })
+      .catch(() => {})
+      .finally(() => setIsLoading(false));
+  }, [productId, products]);
+
+  const product = serverProduct || products.find(
+    (p) =>
+      p.id === productId ||
+      p.sku.toUpperCase() === (productId || '').toUpperCase()
+  );
+
+  if (isLoading) {
+    return (
+      <div className="min-h-[50vh] flex flex-col items-center justify-center text-center p-6 space-y-4">
+        <div className="h-10 w-10 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
+        <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+          Resolving Cryptographic Passport from Ledger...
+        </p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -38,19 +92,27 @@ export default function ProductDetailPage() {
         </div>
         <h2 className="text-xl font-bold text-slate-900 dark:text-white">Product Not Found</h2>
         <p className="text-xs text-slate-500 max-w-sm">
-          This product ID is not registered in your account or was recently removed.
+          No registered cryptographic ledger entry matches identifier "{productId}".
         </p>
-        <Link href="/dashboard/products">
-          <Button variant="primary" size="sm" leftIcon={<ArrowLeft className="h-4 w-4" />}>
-            Back to Products
-          </Button>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/dashboard/products">
+            <Button variant="secondary" size="sm" leftIcon={<ArrowLeft className="h-4 w-4" />}>
+              Back to Products
+            </Button>
+          </Link>
+          <Link href="/verify">
+            <Button variant="primary" size="sm" leftIcon={<ShieldCheck className="h-4 w-4" />}>
+              Public Ledger Verifier
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`https://truetrace.io/verify/${product.sku}`);
+    const url = typeof window !== 'undefined' ? `${window.location.origin}/verify?sku=${product.sku}` : `https://truetrace.io/verify/${product.sku}`;
+    navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -151,7 +213,7 @@ export default function ProductDetailPage() {
                     className="flex items-center justify-between p-3 rounded-xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80"
                   >
                     <span className="text-slate-500 dark:text-slate-400">{key}</span>
-                    <span className="font-semibold text-slate-900 dark:text-slate-100">{val}</span>
+                    <span className="font-semibold text-slate-900 dark:text-slate-100">{String(val)}</span>
                   </div>
                 ))}
               </div>
@@ -171,7 +233,7 @@ export default function ProductDetailPage() {
               </div>
 
               <div className="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-indigo-500 before:to-purple-500">
-                {product.timeline.map((step) => (
+                {product.timeline.map((step: any) => (
                   <div key={step.id} className="relative group">
                     <div className="absolute -left-6 top-1 h-5 w-5 rounded-full border-2 border-white dark:border-slate-950 bg-cyan-500 shadow-glow-cyan/50 flex items-center justify-center text-white text-[10px] font-bold">
                       <Check className="h-3 w-3" />

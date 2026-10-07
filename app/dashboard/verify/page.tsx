@@ -2,19 +2,55 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { QrCode, Search, ShieldCheck, Sparkles, ArrowRight, Camera, UploadCloud, Loader2, RotateCcw, AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
+import {
+  QrCode,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  ArrowRight,
+  Camera,
+  UploadCloud,
+  Loader2,
+  RotateCcw,
+  AlertTriangle,
+  CheckCircle2,
+  Layers,
+  ExternalLink,
+  Clock,
+  Building2,
+  Check,
+} from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { QrScannerMock } from '@/components/dashboard/QrScannerMock';
 import { QrUploadMock } from '@/components/dashboard/QrUploadMock';
 import { useUserData } from '@/lib/data/user-data-context';
 import { useAuth } from '@/lib/auth/auth-context';
+import { getAllGlobalProducts, fetchGlobalProductsFromServer } from '@/lib/data/store';
 import confetti from 'canvas-confetti';
 import Link from 'next/link';
 
+function extractCleanCode(input: string): string {
+  if (!input) return '';
+  let s = input.trim();
+  if (s.includes('/verify/')) {
+    s = s.split('/verify/')[1];
+  } else if (s.includes('?id=')) {
+    s = s.split('?id=')[1];
+  } else if (s.includes('?sku=')) {
+    s = s.split('?sku=')[1];
+  } else if (s.includes('/')) {
+    const parts = s.split('/');
+    s = parts[parts.length - 1];
+  }
+  s = s.split('?')[0].split('&')[0].replace(/\/+$/, '');
+  return s.trim().toUpperCase();
+}
+
 function VerifyContent() {
   const searchParams = useSearchParams();
-  const initialId = searchParams.get('id') || '';
+  const rawId = searchParams.get('id') || searchParams.get('sku') || '';
+  const initialId = extractCleanCode(rawId);
   const initialMode = searchParams.get('mode') === 'upload' ? 'upload' : searchParams.get('mode') === 'scan' ? 'scan' : 'input';
 
   const { products, recordVerification, recordScanHistory, findProductBySkuOrId } = useUserData();
@@ -24,121 +60,192 @@ function VerifyContent() {
   const [inputCode, setInputCode] = useState(initialId);
   const [isVerifying, setIsVerifying] = useState(false);
   const [result, setResult] = useState<any | null>(null);
+  const [allBatches, setAllBatches] = useState<any[]>([]);
+
+  const loadBatches = async () => {
+    try {
+      const serverList = await fetchGlobalProductsFromServer();
+      if (serverList && serverList.length > 0) {
+        setAllBatches(serverList);
+        return serverList;
+      }
+    } catch (e) {}
+    const local = getAllGlobalProducts();
+    setAllBatches(local);
+    return local;
+  };
 
   useEffect(() => {
+    loadBatches();
     if (initialId) {
       handleVerification(initialId, 'manual');
     }
   }, [initialId]);
 
-  const handleVerification = (codeToVerify: string, method: 'camera' | 'upload' | 'manual' = 'manual') => {
-    const clean = codeToVerify.trim().toUpperCase();
+  const handleVerification = async (codeToVerify: string, method: 'camera' | 'upload' | 'manual' = 'manual') => {
+    const clean = extractCleanCode(codeToVerify);
     if (!clean) return;
 
     setIsVerifying(true);
     setResult(null);
 
-    setTimeout(() => {
-      setIsVerifying(false);
+    try {
+      // 1. First, call central API verification endpoint (checks ledger & records audit block)
+      const res = await fetch('/api/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: clean,
+          method,
+          user: user ? { id: user.id, username: user.username } : undefined,
+        }),
+      });
 
-      // Check if product exists in currently logged-in user's products
-      const matchedProduct = findProductBySkuOrId(clean);
+      const json = await res.json();
 
-      if (matchedProduct) {
-        // Authentic match found in user's registry!
-        const verificationRecord = recordVerification({
-          productId: matchedProduct.id,
-          productName: matchedProduct.name,
-          brand: matchedProduct.brand,
-          category: matchedProduct.category,
-          verificationId: matchedProduct.sku,
+      if (json.success && json.product) {
+        const p = json.product;
+        const isApproved = p.onChainStatus === 'APPROVED';
+
+        recordVerification({
+          productId: p.id,
+          productName: p.name,
+          brand: p.brand,
+          category: p.category,
+          verificationId: p.sku,
           status: 'authentic',
-          location: 'Personal Account Node',
+          location: 'TrueTrace Decentralized Node',
           scannedBy: user?.username || 'Authorized User',
           deviceType: method === 'camera' ? 'TrueTrace Optical Scanner' : method === 'upload' ? 'QR File Processor' : 'Web Terminal',
           ipAddress: '127.0.0.1 (Local Session)',
           anomalyScore: 0,
           method,
-          riskFactors: ['Valid digital passport signature matched in registry'],
+          riskFactors: ['Valid digital passport signature matched in ledger'],
         });
 
         recordScanHistory({
-          scanCode: matchedProduct.sku,
+          scanCode: p.sku,
           result: 'authentic',
           method,
-          productId: matchedProduct.id,
-          productName: matchedProduct.name,
-          details: 'Matched authentic product in user registry',
+          productId: p.id,
+          productName: p.name,
+          details: 'Matched authentic product in TrueTrace blockchain ledger',
         });
 
         setResult({
           status: 'authentic',
-          title: matchedProduct.name,
-          sku: matchedProduct.sku,
-          category: matchedProduct.category,
-          brand: matchedProduct.brand,
-          manufacturer: matchedProduct.manufacturer,
-          origin: matchedProduct.origin,
-          manufacturedDate: matchedProduct.manufacturingDate,
-          securityScore: matchedProduct.securityScore || 99,
-          summary: '✓ AUTHENTIC PRODUCT — This cryptographic micro-seal is registered in your account and matches the origin passport.',
-          productId: matchedProduct.id,
+          title: p.name,
+          sku: p.sku,
+          category: p.category,
+          brand: p.brand,
+          manufacturer: p.manufacturer,
+          origin: p.origin,
+          manufacturedDate: p.manufacturingDate,
+          securityScore: p.securityScore || 99,
+          onChainStatus: p.onChainStatus || 'APPROVED',
+          adminApproverWallet: p.adminApproverWallet,
+          approvalTxHash: p.approvalTxHash,
+          creationTxHash: p.creationTxHash,
+          vendorWallet: p.vendorWallet,
+          summary: isApproved
+            ? '✓ AUTHENTIC PRODUCT — Site Admin Cryptographically Approved via MetaMask signature.'
+            : '🟡 VENDOR REGISTERED — Awaiting Site Admin Cryptographic Approval.',
+          productId: p.id,
           method,
+          blockchainProof: json.blockchainProof,
         });
 
+        if (isApproved) {
+          try {
+            confetti({
+              particleCount: 80,
+              spread: 70,
+              origin: { y: 0.6 },
+              colors: ['#38BDF8', '#5B8CFF', '#34D399', '#8B7CFF'],
+            });
+          } catch (e) {}
+        }
+        setIsVerifying(false);
+        return;
+      }
+    } catch (e) {
+      console.warn('API verify fallback to client store:', e);
+    }
+
+    // 2. Client-side fallback if server was temporarily unreachable
+    const batches = allBatches.length > 0 ? allBatches : getAllGlobalProducts();
+    let matchedProduct = batches.find(
+      (p) =>
+        p.sku.toUpperCase() === clean ||
+        p.id.toUpperCase() === clean ||
+        p.sku.toUpperCase().includes(clean) ||
+        clean.includes(p.sku.toUpperCase()) ||
+        p.name.toUpperCase().includes(clean)
+    );
+
+    if (!matchedProduct) {
+      matchedProduct = findProductBySkuOrId(clean);
+    }
+
+    if (matchedProduct) {
+      const isApproved = matchedProduct.onChainStatus === 'APPROVED';
+      setResult({
+        status: 'authentic',
+        title: matchedProduct.name,
+        sku: matchedProduct.sku,
+        category: matchedProduct.category,
+        brand: matchedProduct.brand,
+        manufacturer: matchedProduct.manufacturer,
+        origin: matchedProduct.origin,
+        manufacturedDate: matchedProduct.manufacturingDate,
+        securityScore: matchedProduct.securityScore || 99,
+        onChainStatus: matchedProduct.onChainStatus || 'APPROVED',
+        adminApproverWallet: matchedProduct.adminApproverWallet,
+        approvalTxHash: matchedProduct.approvalTxHash,
+        creationTxHash: matchedProduct.creationTxHash,
+        vendorWallet: matchedProduct.vendorWallet,
+        summary: isApproved
+          ? '✓ AUTHENTIC PRODUCT — Site Admin Cryptographically Approved via MetaMask signature.'
+          : '🟡 VENDOR REGISTERED — Awaiting Site Admin Cryptographic Approval.',
+        productId: matchedProduct.id,
+        method,
+      });
+
+      if (isApproved) {
         try {
           confetti({
             particleCount: 75,
             spread: 60,
             origin: { y: 0.6 },
-            colors: ['#38BDF8', '#5B8CFF', '#34D399', '#8B7CFF'],
           });
         } catch (e) {}
-      } else {
-        // Product NOT found in user's registry
-        recordVerification({
-          productName: 'Unregistered / Unknown QR Asset',
-          brand: 'Unrecognized Entity',
-          category: 'Unknown',
-          verificationId: clean,
-          status: 'not_found',
-          location: 'Public Scan Point',
-          scannedBy: user?.username || 'User',
-          deviceType: method === 'camera' ? 'Optical Scanner' : method === 'upload' ? 'QR File Processor' : 'Web Console',
-          ipAddress: '127.0.0.1',
-          anomalyScore: 88,
-          method,
-          riskFactors: ['Token identifier not found in your registered product database'],
-        });
-
-        recordScanHistory({
-          scanCode: clean,
-          result: 'not_found',
-          method,
-          details: 'QR token not associated with any product in this account',
-        });
-
-        setResult({
-          status: 'not_found',
-          title: 'Product Not Found in Account',
-          sku: clean,
-          category: 'Unregistered',
-          brand: 'Unknown',
-          manufacturer: 'Unrecognized Origin',
-          origin: 'Unknown',
-          manufacturedDate: 'N/A',
-          securityScore: 0,
-          summary: '⚠ PRODUCT NOT FOUND — This QR code or serial ID is not associated with a registered product in your account.',
-          method,
-        });
       }
-    }, 600);
+    } else {
+      setResult({
+        status: 'not_found',
+        title: 'Product Not Found in Ledger',
+        sku: clean,
+        category: 'Unregistered',
+        brand: 'Unknown',
+        manufacturer: 'Unrecognized Origin',
+        origin: 'Unknown',
+        manufacturedDate: 'N/A',
+        securityScore: 0,
+        summary: '⚠ PRODUCT NOT FOUND — This QR code or serial ID is not associated with a registered product on the blockchain.',
+        method,
+      });
+    }
+
+    setIsVerifying(false);
   };
 
   const handleManualSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleVerification(inputCode, 'manual');
   };
+
+  const isApproved = result?.onChainStatus === 'APPROVED';
+  const isPending = result?.onChainStatus === 'PENDING_APPROVAL';
 
   return (
     <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
@@ -152,7 +259,7 @@ function VerifyContent() {
           Verify Product Authenticity
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-          Scan with optical camera, upload a QR code image, or enter a serial ID to verify against your registered inventory.
+          Scan with optical camera, upload a QR code image, or enter a serial ID to verify against the decentralized cryptographic ledger.
         </p>
       </div>
 
@@ -204,19 +311,29 @@ function VerifyContent() {
             <div
               className={`h-14 w-14 rounded-2xl flex items-center justify-center flex-shrink-0 ${
                 result.status === 'authentic'
-                  ? 'bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 shadow-emerald-500/20'
-                  : 'bg-amber-500/20 text-amber-500 border border-amber-500/40 shadow-amber-500/20'
+                  ? isApproved
+                    ? 'bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 shadow-emerald-500/20'
+                    : 'bg-amber-500/20 text-amber-500 border border-amber-500/40 shadow-amber-500/20'
+                  : 'bg-rose-500/20 text-rose-500 border border-rose-500/40 shadow-rose-500/20'
               }`}
             >
               {result.status === 'authentic' ? (
-                <CheckCircle2 className="h-8 w-8 text-emerald-500" />
+                isApproved ? (
+                  <CheckCircle2 className="h-8 w-8 text-emerald-500" />
+                ) : (
+                  <Clock className="h-8 w-8 text-amber-500" />
+                )
               ) : (
-                <AlertTriangle className="h-8 w-8 text-amber-500" />
+                <AlertTriangle className="h-8 w-8 text-rose-500" />
               )}
             </div>
             <div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                {result.status === 'authentic' ? '✓ AUTHENTIC PRODUCT' : '⚠ PRODUCT NOT FOUND'}
+                {result.status === 'authentic'
+                  ? isApproved
+                    ? '✓ AUTHENTIC PRODUCT'
+                    : '🟡 PENDING ADMIN APPROVAL'
+                  : '⚠ PRODUCT NOT FOUND'}
               </h2>
               <p className="text-xs text-slate-500 font-mono mt-0.5">
                 Target Token: {result.sku}
@@ -227,38 +344,66 @@ function VerifyContent() {
           <div
             className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
               result.status === 'authentic'
-                ? 'bg-emerald-500/10 text-emerald-900 dark:text-emerald-300 border border-emerald-500/30'
-                : 'bg-amber-500/10 text-amber-900 dark:text-amber-300 border border-amber-500/30'
+                ? isApproved
+                  ? 'bg-emerald-500/10 text-emerald-900 dark:text-emerald-300 border border-emerald-500/30'
+                  : 'bg-amber-500/10 text-amber-900 dark:text-amber-300 border border-amber-500/30'
+                : 'bg-rose-500/10 text-rose-900 dark:text-rose-300 border border-rose-500/30'
             }`}
           >
             {result.summary}
           </div>
 
           {/* Details Table */}
-          <div className="space-y-2 text-xs">
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-500">Product Name</span>
-              <span className="font-bold text-slate-900 dark:text-slate-100">{result.title}</span>
-            </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-500">Product ID / SKU</span>
-              <span className="font-mono text-cyan-600 dark:text-cyan-400 font-semibold">{result.sku}</span>
-            </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-500">Manufacturer</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">{result.manufacturer}</span>
-            </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-500">Origin</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">{result.origin}</span>
-            </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-500">Verification Method</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200 uppercase">{result.method}</span>
-            </div>
-          </div>
+          {result.status === 'authentic' && (
+            <div className="space-y-2 text-xs">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-slate-500">Product Name</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{result.title}</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-slate-500">Product ID / SKU</span>
+                <span className="font-mono text-cyan-600 dark:text-cyan-400 font-semibold">{result.sku}</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-slate-500">Manufacturer</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">{result.manufacturer}</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-slate-500">Origin</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">{result.origin}</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-slate-500">Ledger Status</span>
+                <span
+                  className={`font-semibold uppercase px-2 py-0.5 rounded-md ${
+                    isApproved
+                      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                      : 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
+                  }`}
+                >
+                  {result.onChainStatus}
+                </span>
+              </div>
 
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+              {result.adminApproverWallet && (
+                <div className="p-3 rounded-xl bg-cyan-500/5 border border-cyan-500/20 text-xs space-y-1">
+                  <div className="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
+                    Site Admin MetaMask Approver
+                  </div>
+                  <div className="font-mono text-[11px] text-slate-700 dark:text-slate-300 break-all">
+                    {result.adminApproverWallet}
+                  </div>
+                  {result.approvalTxHash && (
+                    <div className="text-[10px] text-slate-500 font-mono break-all pt-1 border-t border-cyan-500/10">
+                      Approval Tx: {result.approvalTxHash}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3 flex-wrap">
             <Button
               variant="secondary"
               size="md"
@@ -271,13 +416,29 @@ function VerifyContent() {
               Verify Another
             </Button>
 
-            {result.productId && (
-              <Link href={`/dashboard/products/${result.productId}`}>
-                <Button variant="primary" size="md" rightIcon={<ArrowRight className="h-4 w-4" />}>
-                  View Product Passport
+            <div className="flex items-center gap-2">
+              <Link href="/supply-chain">
+                <Button variant="outline" size="sm" leftIcon={<Layers className="h-4 w-4" />}>
+                  Supply Chain Map
                 </Button>
               </Link>
-            )}
+
+              {isPending && (
+                <Link href="/admin/approvals">
+                  <Button variant="primary" size="sm" className="bg-amber-500 hover:bg-amber-600 text-white font-bold">
+                    Approve as Admin
+                  </Button>
+                </Link>
+              )}
+
+              {result.productId && (
+                <Link href={`/dashboard/products/${result.productId}`}>
+                  <Button variant="primary" size="sm" rightIcon={<ArrowRight className="h-4 w-4" />}>
+                    Product Passport
+                  </Button>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       ) : mode === 'input' ? (
@@ -286,14 +447,14 @@ function VerifyContent() {
           <form onSubmit={handleManualSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                Enter Product ID / SKU to Verify
+                Enter Product ID, SKU, or Paste QR URL to Verify
               </label>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   value={inputCode}
                   onChange={(e) => setInputCode(e.target.value)}
-                  placeholder="e.g. TT-LUX-9941, TT-ELEC-4420"
+                  placeholder="e.g. 22ggtty, TT-LUX-9941, Phone..."
                   className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/80 px-4 py-3.5 text-sm font-mono text-slate-900 dark:text-white placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none"
                   autoFocus
                 />
@@ -311,25 +472,34 @@ function VerifyContent() {
             </div>
           </form>
 
-          {/* Quick links to user's existing products if any */}
-          {products.length > 0 && (
+          {/* Quick links to all registered batches */}
+          {allBatches.length > 0 && (
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 block">
-                Your Registered Products (Click to auto-verify):
+                Registered Blockchain Batches (Click to verify instantly across devices):
               </span>
               <div className="flex flex-wrap gap-2 text-xs">
-                {products.map((p) => (
-                  <button
-                    key={p.id}
-                    onClick={() => {
-                      setInputCode(p.sku);
-                      handleVerification(p.sku, 'manual');
-                    }}
-                    className="px-3 py-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 font-mono transition-colors"
-                  >
-                    ✓ {p.name} ({p.sku})
-                  </button>
-                ))}
+                {allBatches.map((p) => {
+                  const isApp = p.onChainStatus === 'APPROVED';
+                  return (
+                    <button
+                      key={p.sku || p.id}
+                      onClick={() => {
+                        setInputCode(p.sku);
+                        handleVerification(p.sku, 'manual');
+                      }}
+                      className={`px-3 py-1.5 rounded-xl border font-mono transition-colors flex items-center gap-1.5 ${
+                        isApp
+                          ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
+                          : 'border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20'
+                      }`}
+                    >
+                      <span>{isApp ? '🟢' : '🟡'}</span>
+                      <span>{p.sku}</span>
+                      <span className="font-sans text-[11px] opacity-75">({p.name})</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}

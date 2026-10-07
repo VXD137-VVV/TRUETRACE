@@ -41,14 +41,40 @@ export function UserDataProvider({ children }: { children: React.ReactNode }) {
   const [userData, setUserData] = useState<UserDataStore>({ products: [], verifications: [], scanHistory: [] });
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const loadData = () => {
+  const loadData = async () => {
+    let localProds: Product[] = [];
     if (user?.id) {
       const data = getUserData(user.id);
+      localProds = data.products || [];
       setUserData(data);
     } else {
       setUserData({ products: [], verifications: [], scanHistory: [] });
     }
     setIsLoading(false);
+
+    // Synchronize with central backend database across all connected systems
+    try {
+      const res = await fetch('/api/products?t=' + Date.now(), { cache: 'no-store' });
+      const json = await res.json();
+      if (json.success && Array.isArray(json.products) && json.products.length > 0) {
+        setUserData((prev) => {
+          // Merge server products: server products take precedence
+          const serverProducts: Product[] = json.products;
+          const merged = [...serverProducts];
+          prev.products.forEach((lp) => {
+            if (!merged.some((sp) => sp.id === lp.id || sp.sku.toUpperCase() === lp.sku.toUpperCase())) {
+              merged.push(lp);
+            }
+          });
+          return {
+            ...prev,
+            products: merged,
+          };
+        });
+      }
+    } catch (e) {
+      // offline fallback
+    }
   };
 
   useEffect(() => {
@@ -179,10 +205,36 @@ export function UserDataProvider({ children }: { children: React.ReactNode }) {
 
   const findProductBySkuOrId = (query: string): Product | undefined => {
     if (!query) return undefined;
-    const clean = query.trim().toUpperCase();
-    return userData.products.find(
-      (p) => p.sku.toUpperCase() === clean || p.id.toUpperCase() === clean || p.name.toUpperCase().includes(clean)
+    let clean = query.trim().toUpperCase();
+    if (clean.includes('/VERIFY/')) {
+      clean = clean.split('/VERIFY/')[1];
+    } else if (clean.includes('?ID=')) {
+      clean = clean.split('?ID=')[1];
+    } else if (clean.includes('?SKU=')) {
+      clean = clean.split('?SKU=')[1];
+    } else if (clean.includes('/')) {
+      const parts = clean.split('/');
+      clean = parts[parts.length - 1];
+    }
+    clean = clean.split('?')[0].split('&')[0].replace(/\/+$/, '').trim();
+
+    // 1. Exact match on SKU or ID in userData.products
+    let match = userData.products.find(
+      (p) => p.sku.toUpperCase() === clean || p.id.toUpperCase() === clean
     );
+    if (match) return match;
+
+    // 2. Contains match
+    match = userData.products.find(
+      (p) =>
+        p.sku.toUpperCase().includes(clean) ||
+        clean.includes(p.sku.toUpperCase()) ||
+        p.id.toUpperCase().includes(clean) ||
+        clean.includes(p.id.toUpperCase()) ||
+        p.name.toUpperCase().includes(clean) ||
+        clean.includes(p.name.toUpperCase())
+    );
+    return match;
   };
 
   return (

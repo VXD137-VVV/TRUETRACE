@@ -4,6 +4,23 @@ import { VerificationRecord, ScanHistoryItem } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
+function extractCleanCode(input: string): string {
+  if (!input) return '';
+  let s = input.trim();
+  if (s.includes('/verify/')) {
+    s = s.split('/verify/')[1];
+  } else if (s.includes('?id=')) {
+    s = s.split('?id=')[1];
+  } else if (s.includes('?sku=')) {
+    s = s.split('?sku=')[1];
+  } else if (s.includes('/')) {
+    const parts = s.split('/');
+    s = parts[parts.length - 1];
+  }
+  s = s.split('?')[0].split('&')[0].replace(/\/+$/, '');
+  return s.trim().toUpperCase();
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -13,14 +30,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: 'Verification code required' }, { status: 400 });
     }
 
-    const cleanCode = code.trim().toUpperCase();
+    const cleanCode = extractCleanCode(code) || code.trim().toUpperCase();
     const db = readDatabase();
     const blockchain = getBlockchain();
 
-    // Check if product exists in database
-    const matchedProduct = db.products.find(
+    // Check if product exists in database (exact SKU/ID, contains, or name match)
+    let matchedProduct = db.products.find(
       (p) => p.sku.toUpperCase() === cleanCode || p.id.toUpperCase() === cleanCode
     );
+
+    if (!matchedProduct) {
+      matchedProduct = db.products.find(
+        (p) =>
+          p.sku.toUpperCase().includes(cleanCode) ||
+          cleanCode.includes(p.sku.toUpperCase()) ||
+          p.id.toUpperCase().includes(cleanCode) ||
+          cleanCode.includes(p.id.toUpperCase()) ||
+          p.name.toUpperCase().includes(cleanCode) ||
+          cleanCode.includes(p.name.toUpperCase())
+      );
+    }
 
     if (matchedProduct) {
       // Authentic Match!

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Package, Search, ExternalLink, ShieldCheck, User, Building2 } from 'lucide-react';
-import { getAllUsers, getUserData, DATA_CHANGED_EVENT } from '@/lib/data/store';
+import { getAllUsers, getUserData, DATA_CHANGED_EVENT, fetchGlobalProductsFromServer } from '@/lib/data/store';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ export default function AdminGlobalProductsPage() {
   const [allProducts, setAllProducts] = useState<any[]>([]);
   const [search, setSearch] = useState('');
 
-  const loadData = () => {
+  const loadData = async () => {
     const users = getAllUsers();
     const prods: any[] = [];
     users.forEach((u) => {
@@ -24,6 +24,22 @@ export default function AdminGlobalProductsPage() {
         });
       });
     });
+
+    try {
+      const serverList = await fetchGlobalProductsFromServer();
+      if (serverList && serverList.length > 0) {
+        serverList.forEach((sp) => {
+          if (!prods.some((p) => p.id === sp.id || p.sku.toUpperCase() === sp.sku.toUpperCase())) {
+            prods.push({
+              ...sp,
+              ownerName: sp.vendorWallet ? `Vendor (${sp.vendorWallet.slice(0, 6)}...)` : 'Registered Vendor',
+              ownerEmail: 'vendor@truetrace.io',
+            });
+          }
+        });
+      }
+    } catch (e) {}
+
     setAllProducts(prods);
   };
 
