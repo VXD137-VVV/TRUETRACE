@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Search, ShieldCheck, AlertTriangle, XCircle, ArrowRight, CheckCircle2, QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -149,6 +150,16 @@ export function LiveVerificationWidget() {
                     <span className="font-semibold text-slate-800 dark:text-slate-200">{detail.value}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Action to full blockchain provenance */}
+              <div className="mt-5 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <span className="text-xs text-slate-500">Inspect cryptographic signatures & audit trail:</span>
+                <Link href={`/verify?sku=${query}`}>
+                  <Button variant="primary" size="sm" rightIcon={<ArrowRight className="h-4 w-4" />}>
+                    View Immutable Blockchain Trail
+                  </Button>
+                </Link>
               </div>
             </div>
           )}

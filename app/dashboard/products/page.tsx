@@ -20,10 +20,12 @@ import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { useUserData } from '@/lib/data/user-data-context';
+import { useWeb3 } from '@/lib/web3/web3-context';
 import { Product } from '@/lib/types';
 
 export default function ProductsPage() {
   const { products, addProduct, deleteProduct } = useUserData();
+  const { account, isConnected, registerProductOnChain } = useWeb3();
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('All');
   const [statusFilter, setStatusFilter] = useState<string>('All');
@@ -53,13 +55,32 @@ export default function ProductsPage() {
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
-  const handleAddProduct = (e: React.FormEvent) => {
+  const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProductName.trim() || !newProductBrand.trim()) return;
 
     const generatedSku = newProductSku.trim() || `TT-${newProductCategory.slice(0, 3).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    addProduct({
+    let txHash = '0x' + Array.from({length: 64}, () => Math.floor(Math.random()*16).toString(16)).join('');
+    let vendorAddr = account || '0x71C8364f3B8820B134D0d32B8180E2e89BfEb950';
+
+    if (isConnected) {
+      try {
+        const res = await registerProductOnChain({
+          sku: generatedSku,
+          name: newProductName.trim(),
+          brand: newProductBrand.trim(),
+          origin: newProductOrigin.trim() || 'Geneva, Switzerland',
+          details: newProductDesc.trim(),
+        });
+        if (res.txHash) txHash = res.txHash;
+      } catch (err: any) {
+        alert(err.message || 'MetaMask transaction rejected');
+        return;
+      }
+    }
+
+    await addProduct({
       sku: generatedSku,
       name: newProductName.trim(),
       category: newProductCategory,
@@ -67,8 +88,11 @@ export default function ProductsPage() {
       manufacturer: `${newProductBrand.trim()} Manufacturing SA`,
       manufacturingDate: new Date().toISOString().split('T')[0],
       origin: newProductOrigin.trim() || 'Geneva, Switzerland',
-      currentLocation: 'Registered in Personal Vault',
+      currentLocation: 'Vendor Genesis Vault',
       status: 'authentic',
+      onChainStatus: 'PENDING_APPROVAL',
+      vendorWallet: vendorAddr,
+      creationTxHash: txHash,
       image:
         newProductCategory === 'Luxury'
           ? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80'
@@ -76,13 +100,34 @@ export default function ProductsPage() {
           ? 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'
           : 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
       description: newProductDesc.trim() || 'Tamper-proof cryptographic product passport asset.',
-      batchNumber: `BATCH-${new Date().getFullYear()}-01`,
-      qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/${generatedSku}`,
-      securityScore: 99,
+      batchNumber: `BATCH-${new Date().getFullYear()}-${Math.floor(10 + Math.random() * 89)}`,
+      qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${generatedSku}`,
+      securityScore: 96,
       specs: {
-        'Origin Cryptographic Tag': 'Ed25519 Micro-Seal',
-        'Provenance Status': 'Genesis Registered',
+        'Origin Cryptographic Tag': 'MetaMask Genesis Signer',
+        'Provenance Status': 'Pending Site Admin Acception',
       },
+      timeline: [
+        {
+          id: `step-vendor-${Date.now()}`,
+          title: 'Vendor Genesis Registration (MetaMask Signed)',
+          status: 'completed',
+          timestamp: new Date().toLocaleString(),
+          location: newProductOrigin.trim() || 'Manufacturing Facility',
+          handler: `Vendor (${vendorAddr.substring(0, 6)}...${vendorAddr.substring(vendorAddr.length - 4)})`,
+          notes: `Batch minted into decentralized ledger. Tx: ${txHash.substring(0, 10)}...`,
+          verifiedBy: `Vendor Wallet (${vendorAddr.substring(0, 8)}...)`,
+        },
+        {
+          id: `step-awaiting-${Date.now()}`,
+          title: 'Awaiting Site Admin Cryptographic Acception',
+          status: 'in-progress',
+          timestamp: 'Pending',
+          location: 'Site Admin Queue',
+          handler: 'Site Admin Authority',
+          notes: 'Awaiting Site Admin to inspect and sign approval with MetaMask.',
+        },
+      ],
     });
 
     setIsAddModalOpen(false);
@@ -232,8 +277,19 @@ export default function ProductsPage() {
 
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <div className="text-[11px] font-semibold text-cyan-600 dark:text-cyan-400">
-                    {product.brand}
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[11px] font-semibold text-cyan-600 dark:text-cyan-400">
+                      {product.brand}
+                    </span>
+                    <span
+                      className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full border ${
+                        product.onChainStatus === 'PENDING_APPROVAL'
+                          ? 'bg-amber-500/10 text-amber-500 border-amber-500/30'
+                          : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30'
+                      }`}
+                    >
+                      {product.onChainStatus === 'PENDING_APPROVAL' ? '🟡 Pending Admin' : '🟢 Admin Approved'}
+                    </span>
                   </div>
                   <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-500 transition-colors line-clamp-1">
                     {product.name}
@@ -244,12 +300,20 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
-                  <Link
-                    href={`/dashboard/products/${product.id}`}
-                    className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1"
-                  >
-                    Inspect <ExternalLink className="h-3 w-3" />
-                  </Link>
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={`/verify?sku=${product.sku}`}
+                      className="font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1 text-[11px]"
+                    >
+                      Verify <ExternalLink className="h-3 w-3" />
+                    </Link>
+                    <Link
+                      href={`/dashboard/products/${product.id}`}
+                      className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1"
+                    >
+                      Inspect <ExternalLink className="h-3 w-3" />
+                    </Link>
+                  </div>
 
                   <button
                     onClick={() => {

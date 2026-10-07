@@ -1,6 +1,12 @@
 import crypto from 'crypto';
 
-export type TransactionType = 'PRODUCT_MINT' | 'CUSTODY_TRANSFER' | 'VERIFICATION_AUDIT' | 'TAMPER_ALERT';
+export type TransactionType =
+  | 'PRODUCT_MINT'
+  | 'CUSTODY_TRANSFER'
+  | 'VERIFICATION_AUDIT'
+  | 'TAMPER_ALERT'
+  | 'ADMIN_APPROVAL'
+  | 'ADMIN_REJECTION';
 
 export interface BlockchainTransaction {
   id: string;

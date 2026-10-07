@@ -73,13 +73,18 @@ export default function AdminDashboardPage() {
         </div>
 
         <div className="flex items-center gap-3">
+          <Link href="/admin/approvals">
+            <Button variant="primary" size="sm" isMagnetic leftIcon={<ShieldCheck className="h-4 w-4" />} className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold">
+              Vendor Approvals (MetaMask)
+            </Button>
+          </Link>
           <Link href="/admin/users">
             <Button variant="secondary" size="sm" leftIcon={<Users className="h-4 w-4" />}>
               Manage Users
             </Button>
           </Link>
           <Link href="/admin/settings">
-            <Button variant="primary" size="sm" isMagnetic leftIcon={<Sliders className="h-4 w-4" />}>
+            <Button variant="secondary" size="sm" leftIcon={<Sliders className="h-4 w-4" />}>
               Platform Settings
             </Button>
           </Link>
@@ -144,7 +149,24 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Quick Admin Navigation Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Link
+          href="/admin/approvals"
+          className="glass-card rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-purple-500/40 transition-all duration-300 group space-y-3 bg-gradient-to-b from-purple-500/5 to-transparent"
+          data-cursor="card"
+        >
+          <div className="h-12 w-12 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <ShieldCheck className="h-6 w-6" />
+          </div>
+          <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors flex items-center justify-between">
+            <span>MetaMask Approvals</span>
+            <ArrowUpRight className="h-4 w-4 text-purple-500" />
+          </h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Review vendor batches, sign cryptographic approvals via MetaMask, and anchor records on-chain.
+          </p>
+        </Link>
+
         <Link
           href="/admin/users"
           className="glass-card rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-purple-500/40 transition-all duration-300 group space-y-3"

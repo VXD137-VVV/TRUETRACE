@@ -60,6 +60,13 @@ export async function POST(request: Request) {
       qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/${sku}`,
       securityScore: 99,
       userId: body.userId || 'admin-001',
+      // Web3 Supply Chain Provenance Fields
+      onChainStatus: body.onChainStatus || 'PENDING_APPROVAL',
+      vendorWallet: body.vendorWallet,
+      adminApproverWallet: body.adminApproverWallet,
+      creationTxHash: body.creationTxHash,
+      approvalTxHash: body.approvalTxHash,
+      approvedAt: body.approvedAt,
       timeline: body.timeline || [
         {
           id: 'step-genesis',

@@ -35,6 +35,15 @@ export interface Product {
   specs: Record<string, string>;
   createdAt?: string;
   userId?: string;
+  // Web3 / Supply Chain Provenance Fields
+  onChainStatus?: 'PENDING_APPROVAL' | 'APPROVED' | 'REJECTED' | 'IN_TRANSIT' | 'DELIVERED';
+  vendorWallet?: string;
+  adminApproverWallet?: string;
+  creationTxHash?: string;
+  approvalTxHash?: string;
+  approvedAt?: string;
+  contractAddress?: string;
+  blockNumber?: number;
 }
 
 export interface VerificationRecord {

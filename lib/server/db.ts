@@ -94,6 +94,60 @@ function getDefaultDatabase(): DatabaseSchema {
       'Power Reserve': '72 Hours Chronometer Certified',
       'Digital Passport': 'Decentralized SHA-256 Block Proof #1',
     },
+    onChainStatus: 'APPROVED',
+    vendorWallet: '0x71C8364f3B8820B134D0d32B8180E2e89BfEb950',
+    adminApproverWallet: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+    creationTxHash: '0x8f7a93b4e72301b3c9d1234567890abcdef1234567890abcdef1234567890abc1',
+    approvalTxHash: '0x2d5c89e1a2f30b4c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c',
+  };
+
+  const pendingProduct: Product = {
+    id: 'prod-002-pharma',
+    sku: 'TT-PHR-5520',
+    name: 'CardioShield Nano-Vaccine Batch 44',
+    category: 'Pharmaceuticals',
+    brand: 'BioHealth Labs',
+    manufacturer: 'BioHealth Pharma GmbH',
+    manufacturingDate: '2026-04-01',
+    origin: 'Frankfurt, Germany',
+    currentLocation: 'Cold Storage Transit Bay 3',
+    status: 'authentic',
+    verificationCount: 0,
+    lastVerified: 'Pending Admin Review',
+    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+    description: 'Cold-chain tracked bio-pharmaceutical units requiring continuous temperature telemetry.',
+    batchNumber: 'BATCH-2026-V44',
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/TT-PHR-5520',
+    securityScore: 92,
+    userId: 'admin-001',
+    onChainStatus: 'PENDING_APPROVAL',
+    vendorWallet: '0x9965507D1a55bcC2695C58ba16FB37d819B0A4df',
+    creationTxHash: '0x4e6b12a3f9c8d7e0123456789abcdef0123456789abcdef0123456789abcdef01',
+    specs: {
+      'Storage Condition': '-20°C Cold Chain',
+      'Regulatory Clearance': 'EMA/FDA Validated',
+    },
+    timeline: [
+      {
+        id: 't-1',
+        title: 'Vendor Genesis Registration',
+        status: 'completed',
+        timestamp: '01 Apr 2026, 02:40 PM',
+        location: 'Frankfurt Production Plant',
+        handler: 'BioHealth Labs (Vendor)',
+        notes: 'Batch minted with cold-chain sensor payload on ledger.',
+        verifiedBy: '0x9965507D1a55bcC2695C58ba16FB37d819B0A4df',
+      },
+      {
+        id: 't-2',
+        title: 'Awaiting Site Admin Cryptographic Acception',
+        status: 'in-progress',
+        timestamp: 'Pending',
+        location: 'Site Admin Queue',
+        handler: 'Site Admin Authority',
+        notes: 'Waiting for Admin MetaMask verification signature.',
+      },
+    ],
   };
 
   // Add transaction and mine Block #1
@@ -114,7 +168,7 @@ function getDefaultDatabase(): DatabaseSchema {
 
   return {
     users: [defaultAdmin],
-    products: [initialProduct],
+    products: [initialProduct, pendingProduct],
     verifications: [],
     scanHistory: [],
     blockchain: initialBlockchain,

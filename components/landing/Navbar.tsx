@@ -7,6 +7,7 @@ import { ShieldCheck, ArrowRight, Menu, X, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { useAuth } from '@/lib/auth/auth-context';
+import { MetaMaskConnectButton } from '@/components/web3/MetaMaskConnectButton';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,10 +24,10 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Product', href: '#product' },
+    { label: 'Supply Chain Flow', href: '/supply-chain' },
+    { label: 'Verify Asset', href: '/verify' },
+    { label: 'Admin Approvals', href: '/admin/approvals' },
     { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Features', href: '#features' },
-    { label: 'About', href: '#about' },
   ];
 
   return (
@@ -71,6 +72,7 @@ export function Navbar() {
           {/* Right Action Bar */}
           <div className="hidden sm:flex items-center gap-3">
             <ThemeToggle />
+            <MetaMaskConnectButton />
 
             {isAuthenticated && user ? (
               <Link href="/dashboard">

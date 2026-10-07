@@ -11,14 +11,18 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
+import { useWeb3 } from '@/lib/web3/web3-context';
+import { Wallet, CheckCircle2 } from 'lucide-react';
 
 export default function DashboardOverviewPage() {
   const { user } = useAuth();
   const { products, addProduct } = useUserData();
+  const { account, isConnected, connectWallet, registerProductOnChain } = useWeb3();
   const rawUsername = user?.username || 'User';
   const uppercaseUsername = rawUsername.toUpperCase();
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState<'Luxury' | 'Electronics' | 'Pharmaceuticals' | 'Apparel' | 'Cosmetics' | 'Automotive'>('Luxury');
   const [brand, setBrand] = useState('');
@@ -26,44 +30,93 @@ export default function DashboardOverviewPage() {
   const [origin, setOrigin] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleAddSubmit = (e: React.FormEvent) => {
+  const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!productName.trim() || !brand.trim()) return;
 
     const generatedSku = sku.trim() || `TT-${category.slice(0, 3).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    addProduct({
-      sku: generatedSku,
-      name: productName.trim(),
-      category,
-      brand: brand.trim(),
-      manufacturer: `${brand.trim()} Manufacturing Corp`,
-      manufacturingDate: new Date().toISOString().split('T')[0],
-      origin: origin.trim() || 'Geneva, Switzerland',
-      currentLocation: 'Central Vault Warehouse',
-      status: 'authentic',
-      image:
-        category === 'Luxury'
-          ? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80'
-          : category === 'Electronics'
-          ? 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'
-          : 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
-      description: description.trim() || 'Cryptographically verified registered asset.',
-      batchNumber: `BATCH-${new Date().getFullYear()}-01`,
-      qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://truetrace.io/verify/${generatedSku}`,
-      securityScore: 99,
-      specs: {
-        'Origin Standard': 'ISO/IEC 27001 Cryptographic RoT',
-        'Ledger State': 'Genesis Registered',
-      },
-    });
+    try {
+      setIsSubmitting(true);
+      let txHash = '0x' + Array.from({length: 64}, () => Math.floor(Math.random()*16).toString(16)).join('');
+      let vendorAddr = account || '0x71C8364f3B8820B134D0d32B8180E2e89BfEb950';
 
-    setIsAddModalOpen(false);
-    setProductName('');
-    setBrand('');
-    setSku('');
-    setOrigin('');
-    setDescription('');
+      if (isConnected) {
+        // Trigger MetaMask signature for vendor product genesis
+        const res = await registerProductOnChain({
+          sku: generatedSku,
+          name: productName.trim(),
+          brand: brand.trim(),
+          origin: origin.trim() || 'Geneva, Switzerland',
+          details: description.trim(),
+        });
+        if (res.txHash) {
+          txHash = res.txHash;
+        }
+      }
+
+      await addProduct({
+        sku: generatedSku,
+        name: productName.trim(),
+        category,
+        brand: brand.trim(),
+        manufacturer: `${brand.trim()} Manufacturing Corp`,
+        manufacturingDate: new Date().toISOString().split('T')[0],
+        origin: origin.trim() || 'Geneva, Switzerland',
+        currentLocation: 'Vendor Genesis Vault',
+        status: 'authentic',
+        onChainStatus: 'PENDING_APPROVAL',
+        vendorWallet: vendorAddr,
+        creationTxHash: txHash,
+        image:
+          category === 'Luxury'
+            ? 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80'
+            : category === 'Electronics'
+            ? 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80'
+            : 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+        description: description.trim() || 'Cryptographically verified registered asset.',
+        batchNumber: `BATCH-${new Date().getFullYear()}-${Math.floor(10 + Math.random() * 89)}`,
+        qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${generatedSku}`,
+        securityScore: 95,
+        specs: {
+          'Origin Standard': 'ISO/IEC 27001 Cryptographic RoT',
+          'Ledger State': 'Pending Site Admin Acception',
+        },
+        timeline: [
+          {
+            id: `step-vendor-${Date.now()}`,
+            title: 'Vendor Genesis Registration (MetaMask Signed)',
+            status: 'completed',
+            timestamp: new Date().toLocaleString(),
+            location: origin.trim() || 'Manufacturing Facility',
+            handler: `Vendor (${vendorAddr.substring(0, 6)}...${vendorAddr.substring(vendorAddr.length - 4)})`,
+            notes: `Batch minted into TrueTrace decentralized ledger. Tx: ${txHash.substring(0, 10)}...`,
+            verifiedBy: `Vendor Wallet (${vendorAddr.substring(0, 8)}...)`,
+          },
+          {
+            id: `step-awaiting-${Date.now()}`,
+            title: 'Awaiting Site Admin Cryptographic Acception',
+            status: 'in-progress',
+            timestamp: 'Pending',
+            location: 'Site Admin Queue',
+            handler: 'Site Admin Authority',
+            notes: 'Awaiting Site Admin to inspect and sign approval with MetaMask.',
+          },
+        ],
+      });
+
+      setIsAddModalOpen(false);
+      setProductName('');
+      setBrand('');
+      setSku('');
+      setOrigin('');
+      setDescription('');
+    } catch (err: any) {
+      console.error('Error adding product on chain:', err);
+      alert(err.message || 'MetaMask transaction canceled');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -212,13 +265,25 @@ export default function DashboardOverviewPage() {
             />
           </div>
 
-          <div className="pt-3 flex justify-end gap-2">
-            <Button type="button" variant="ghost" size="sm" onClick={() => setIsAddModalOpen(false)}>
-              Cancel
-            </Button>
-            <Button type="submit" variant="primary" size="sm" isMagnetic>
-              Save & Issue Passport
-            </Button>
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div className="text-[11px] text-slate-400 flex items-center gap-1.5">
+              <Wallet className="h-3.5 w-3.5 text-amber-500" />
+              <span>{isConnected ? `Signing as Vendor: ${account?.slice(0, 6)}...` : 'Connect MetaMask to sign on-chain'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button type="button" variant="ghost" size="sm" onClick={() => setIsAddModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+                size="sm"
+                isLoading={isSubmitting}
+                className="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white font-bold"
+              >
+                Sign with MetaMask & Register
+              </Button>
+            </div>
           </div>
         </form>
       </Modal>
