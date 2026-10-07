@@ -24,7 +24,7 @@
       "origin": "USA",
       "currentLocation": "Central Vault Warehouse",
       "status": "authentic",
-      "verificationCount": 1,
+      "verificationCount": 3,
       "lastVerified": "Just now",
       "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
       "description": "Cryptographically verified registered asset.",
@@ -179,6 +179,46 @@
   ],
   "verifications": [
     {
+      "id": "verif-968129",
+      "productId": "prod-897833",
+      "productName": "Phone",
+      "brand": "Nothing",
+      "category": "Luxury",
+      "verificationId": "22ggtty",
+      "status": "authentic",
+      "scannedAt": "7/10/2026, 3:42:48 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "Public Verified Consumer",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
+      "id": "verif-944257",
+      "productId": "prod-897833",
+      "productName": "Phone",
+      "brand": "Nothing",
+      "category": "Luxury",
+      "verificationId": "22ggtty",
+      "status": "authentic",
+      "scannedAt": "7/10/2026, 3:42:24 pm",
+      "location": "Verified Decentralized Node",
+      "scannedBy": "Public Verified Consumer",
+      "deviceType": "Web Terminal",
+      "ipAddress": "127.0.0.1 (Local Session)",
+      "anomalyScore": 0,
+      "method": "manual",
+      "riskFactors": [
+        "Cryptographic signature valid",
+        "Single-use rotational token matched on ledger"
+      ]
+    },
+    {
       "id": "verif-903441",
       "productId": "prod-897833",
       "productName": "Phone",
@@ -220,6 +260,32 @@
     }
   ],
   "scanHistory": [
+    {
+      "id": "scan-968129",
+      "scanCode": "22ggtty",
+      "result": "authentic",
+      "date": "7/10/2026",
+      "time": "03:42 pm",
+      "method": "manual",
+      "productId": "prod-897833",
+      "productName": "Phone",
+      "userId": "guest",
+      "username": "Guest",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
+    {
+      "id": "scan-944276",
+      "scanCode": "22ggtty",
+      "result": "authentic",
+      "date": "7/10/2026",
+      "time": "03:42 pm",
+      "method": "manual",
+      "productId": "prod-897833",
+      "productName": "Phone",
+      "userId": "guest",
+      "username": "Guest",
+      "details": "Matched authentic product in TrueTrace blockchain ledger"
+    },
     {
       "id": "scan-903464",
       "scanCode": "22ggtty",
@@ -441,6 +507,62 @@
         "nonce": 283,
         "merkleRoot": "ae3d8038caf355eeee10453f332c6ba9207a1938cb9b19f217fc66d871421dba",
         "hash": "00fb4b7d37b27cc027e4cb9a4fbf95221e6beedab9f8870afbea72179aef0e4d"
+      },
+      {
+        "index": 7,
+        "timestamp": "2026-10-07T10:12:24.277Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "22ggtty",
+            "productId": "prod-897833",
+            "productName": "Phone",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1791367944277-f86036",
+            "timestamp": "2026-10-07T10:12:24.277Z",
+            "signature": "0x4af2620b33efff6f3fff3e5befbf79b7b6b1b319b42c10c467a5164f037ce74a"
+          }
+        ],
+        "previousHash": "00fb4b7d37b27cc027e4cb9a4fbf95221e6beedab9f8870afbea72179aef0e4d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 201,
+        "merkleRoot": "c73e7352127691eee5b80380d3995b1e8e50609457dd3900c02ee5092e5ae9c6",
+        "hash": "004995d9bb122fa658e4bf6dc0906f5f9e67695b655ead69d956310326698ac1"
+      },
+      {
+        "index": 8,
+        "timestamp": "2026-10-07T10:12:48.130Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "22ggtty",
+            "productId": "prod-897833",
+            "productName": "Phone",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 3
+            },
+            "id": "tx-1791367968129-4a2ecb",
+            "timestamp": "2026-10-07T10:12:48.129Z",
+            "signature": "0x9e01bd2c0033004a98ca9c690018f03927c1fe257bc84a082d697e84b8c07dcc"
+          }
+        ],
+        "previousHash": "004995d9bb122fa658e4bf6dc0906f5f9e67695b655ead69d956310326698ac1",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 121,
+        "merkleRoot": "ca860441774d1342b24464402e65b9419da5f82d19d9233d2b892b1960dc6b50",
+        "hash": "0077791a24e3f45965714581c80b6eaf5af374399a37da67a629f8f80b018d42"
       }
     ],
     "chain": [
@@ -636,6 +758,62 @@
         "nonce": 283,
         "merkleRoot": "ae3d8038caf355eeee10453f332c6ba9207a1938cb9b19f217fc66d871421dba",
         "hash": "00fb4b7d37b27cc027e4cb9a4fbf95221e6beedab9f8870afbea72179aef0e4d"
+      },
+      {
+        "index": 7,
+        "timestamp": "2026-10-07T10:12:24.277Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "22ggtty",
+            "productId": "prod-897833",
+            "productName": "Phone",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 2
+            },
+            "id": "tx-1791367944277-f86036",
+            "timestamp": "2026-10-07T10:12:24.277Z",
+            "signature": "0x4af2620b33efff6f3fff3e5befbf79b7b6b1b319b42c10c467a5164f037ce74a"
+          }
+        ],
+        "previousHash": "00fb4b7d37b27cc027e4cb9a4fbf95221e6beedab9f8870afbea72179aef0e4d",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 201,
+        "merkleRoot": "c73e7352127691eee5b80380d3995b1e8e50609457dd3900c02ee5092e5ae9c6",
+        "hash": "004995d9bb122fa658e4bf6dc0906f5f9e67695b655ead69d956310326698ac1"
+      },
+      {
+        "index": 8,
+        "timestamp": "2026-10-07T10:12:48.130Z",
+        "transactions": [
+          {
+            "type": "VERIFICATION_AUDIT",
+            "sku": "22ggtty",
+            "productId": "prod-897833",
+            "productName": "Phone",
+            "actor": "Consumer Scan Terminal",
+            "location": "Verification Node",
+            "details": {
+              "method": "manual",
+              "status": "authentic",
+              "verificationCount": 3
+            },
+            "id": "tx-1791367968129-4a2ecb",
+            "timestamp": "2026-10-07T10:12:48.129Z",
+            "signature": "0x9e01bd2c0033004a98ca9c690018f03927c1fe257bc84a082d697e84b8c07dcc"
+          }
+        ],
+        "previousHash": "004995d9bb122fa658e4bf6dc0906f5f9e67695b655ead69d956310326698ac1",
+        "difficulty": 2,
+        "validator": "TrueTrace Audit Validator",
+        "nonce": 121,
+        "merkleRoot": "ca860441774d1342b24464402e65b9419da5f82d19d9233d2b892b1960dc6b50",
+        "hash": "0077791a24e3f45965714581c80b6eaf5af374399a37da67a629f8f80b018d42"
       }
     ],
     "difficulty": 2,
