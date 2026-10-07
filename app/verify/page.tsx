@@ -25,20 +25,75 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+function extractCleanCode(input: string): string {
+  if (!input) return '';
+  let s = input.trim();
+  if (s.includes('/verify/')) {
+    s = s.split('/verify/')[1];
+  } else if (s.includes('/')) {
+    const parts = s.split('/');
+    s = parts[parts.length - 1];
+  }
+  s = s.split('?')[0].replace(/\/+$/, '');
+  return s.trim().toUpperCase();
+}
+
 function VerifyContent() {
   const searchParams = useSearchParams();
-  const initialSku = searchParams.get('sku') || 'TT-LUX-9941';
+  const rawParamSku = searchParams.get('sku') || 'TT-LUX-9941';
+  const initialSku = extractCleanCode(rawParamSku);
 
   const [query, setQuery] = useState(initialSku);
   const [product, setProduct] = useState<Product | null>(null);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
-  const checkLatestFromServer = async (skuToSearch: string) => {
+  const findMatchingProduct = (list: Product[], searchStr: string): Product | null => {
+    const clean = extractCleanCode(searchStr);
+    if (!clean) return null;
+
+    // 1. Exact SKU or ID match
+    let found = list.find((p) => p.sku.toUpperCase() === clean || p.id.toUpperCase() === clean);
+    if (found) return found;
+
+    // 2. Contains match (e.g. partial SKU or pasted URL)
+    found = list.find(
+      (p) =>
+        p.sku.toUpperCase().includes(clean) ||
+        clean.includes(p.sku.toUpperCase()) ||
+        p.id.toUpperCase().includes(clean) ||
+        clean.includes(p.id.toUpperCase())
+    );
+    if (found) return found;
+
+    // 3. Name or Brand match
+    found = list.find(
+      (p) =>
+        p.name.toUpperCase().includes(clean) ||
+        clean.includes(p.name.toUpperCase()) ||
+        p.brand.toUpperCase().includes(clean)
+    );
+    return found || null;
+  };
+
+  const loadServerBatches = async () => {
     try {
       const serverList = await fetchGlobalProductsFromServer();
-      const clean = skuToSearch.trim().toUpperCase();
-      const match = serverList.find((p) => p.sku.toUpperCase() === clean || p.id === clean);
+      if (serverList && serverList.length > 0) {
+        setAllProducts(serverList);
+        return serverList;
+      }
+    } catch (e) {}
+    const local = getAllGlobalProducts();
+    setAllProducts(local);
+    return local;
+  };
+
+  const checkLatestFromServer = async (skuToSearch: string) => {
+    try {
+      const list = await loadServerBatches();
+      const match = findMatchingProduct(list, skuToSearch);
       if (match) {
         setProduct((prev) => {
           if (prev && prev.onChainStatus === 'PENDING_APPROVAL' && match.onChainStatus === 'APPROVED') {
@@ -58,31 +113,37 @@ function VerifyContent() {
     setIsSearching(true);
     setHasSearched(true);
 
-    const found = findGlobalProductBySku(skuToSearch);
-    if (found) {
-      setProduct(found);
-      if (found.onChainStatus === 'APPROVED') {
-        confetti({
-          particleCount: 50,
-          spread: 70,
-          origin: { y: 0.5 },
-        });
+    const localList = getAllGlobalProducts();
+    const localMatch = findMatchingProduct(localList, skuToSearch);
+    if (localMatch) {
+      setProduct(localMatch);
+      if (localMatch.onChainStatus === 'APPROVED') {
+        confetti({ particleCount: 50, spread: 70, origin: { y: 0.5 } });
       }
     }
 
-    await checkLatestFromServer(skuToSearch);
+    // Always fetch latest from server for multi-device sync
+    const serverList = await loadServerBatches();
+    const serverMatch = findMatchingProduct(serverList, skuToSearch);
+    if (serverMatch) {
+      setProduct(serverMatch);
+      if (serverMatch.onChainStatus === 'APPROVED' && (!localMatch || localMatch.onChainStatus !== 'APPROVED')) {
+        confetti({ particleCount: 70, spread: 70, origin: { y: 0.5 } });
+      }
+    }
+
     setIsSearching(false);
   };
 
   useEffect(() => {
+    loadServerBatches();
     if (initialSku) {
       setQuery(initialSku);
       performVerification(initialSku);
     }
   }, [initialSku]);
 
-  // Live polling for multi-system real-time updates:
-  // When Admin on another system accepts the batch via MetaMask, this system flips to APPROVED live!
+  // Live polling: automatically detects when Admin signs on another system
   useEffect(() => {
     if (!query) return;
     const pollInterval = setInterval(() => {
@@ -118,7 +179,7 @@ function VerifyContent() {
         </div>
 
         {/* Search Bar */}
-        <form onSubmit={handleFormSubmit} className="glass-card rounded-3xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xl space-y-3">
+        <form onSubmit={handleFormSubmit} className="glass-card rounded-3xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
@@ -126,7 +187,7 @@ function VerifyContent() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Enter Batch SKU (e.g., TT-LUX-9941, TT-PHR-5520)..."
+                placeholder="Enter Batch SKU, Name, or Product ID (e.g., TT-LUX-9941)..."
                 className="w-full pl-12 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm font-mono text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
@@ -142,29 +203,39 @@ function VerifyContent() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-400 pt-1 flex-wrap">
-            <span>Try sample batches:</span>
-            <button
-              type="button"
-              onClick={() => {
-                setQuery('TT-LUX-9941');
-                performVerification('TT-LUX-9941');
-              }}
-              className="text-cyan-600 dark:text-cyan-400 underline font-mono hover:text-cyan-500"
-            >
-              TT-LUX-9941 (Approved)
-            </button>
-            <span>•</span>
-            <button
-              type="button"
-              onClick={() => {
-                setQuery('TT-PHR-5520');
-                performVerification('TT-PHR-5520');
-              }}
-              className="text-amber-500 underline font-mono hover:text-amber-400"
-            >
-              TT-PHR-5520 (Pending Admin)
-            </button>
+          {/* Dynamic Clickable Registered Batches Pill List */}
+          <div className="pt-1 border-t border-slate-200/60 dark:border-slate-800/60 space-y-1.5">
+            <div className="text-[11px] font-semibold uppercase text-slate-400 tracking-wider flex items-center justify-between">
+              <span>Registered Blockchain Batches (Click to verify instantly):</span>
+              <span className="text-[10px] text-cyan-500 font-mono">Live Ledger Sync</span>
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              {allProducts.map((p) => {
+                const isSelected = query.toUpperCase().includes(p.sku.toUpperCase());
+                const isApp = p.onChainStatus === 'APPROVED';
+                return (
+                  <button
+                    key={p.sku || p.id}
+                    type="button"
+                    onClick={() => {
+                      setQuery(p.sku);
+                      performVerification(p.sku);
+                    }}
+                    className={`px-2.5 py-1 rounded-xl text-xs font-mono font-semibold transition-all flex items-center gap-1.5 border ${
+                      isSelected
+                        ? 'bg-cyan-500 text-white border-cyan-400 shadow-sm'
+                        : isApp
+                        ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20'
+                        : 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 hover:bg-amber-500/20'
+                    }`}
+                  >
+                    <span>{isApp ? '🟢' : '🟡'}</span>
+                    <span>{p.sku}</span>
+                    <span className="text-[10px] opacity-75 font-sans">({p.name.split(' ')[0]})</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </form>
 
